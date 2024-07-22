@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../assets/styles/gradient.css";
+import CardWithHeader from "./CardHeader";
 
 const Home = () => {
   const text = "Welcome to My Portfolio";
@@ -57,28 +58,9 @@ const Home = () => {
       >
         {splitText(text)}
       </motion.h1>
-      <motion.div
-        className="flex justify-center mb-6"
-        animate={{
-          y: ["0px", "15px", "0px"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "loop",
-        }}
-      >
-        <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm flex flex-col items-center">
-          <img
-            src="https://via.placeholder.com/150"
-            alt="Profile"
-            className="w-32 h-32 rounded-full mb-4"
-          />
-          <h2 className="text-2xl font-semibold mb-2">Your Name</h2>
-          <p className="text-lg mb-4">Your Job Title</p>
-          <p className="text-base text-gray-700">Based in Your Location</p>
-        </div>
-      </motion.div>
+      <div className="flex justify-center mb-6">
+        <CardWithHeader />
+      </div>
       <motion.div
         className="colorful-button--wrapper"
         onHoverStart={() => setHovered(true)}
