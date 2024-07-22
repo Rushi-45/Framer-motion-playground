@@ -12,6 +12,7 @@ import { useState } from "react";
 const Header = () => {
   const [isContactHovered, setIsContactHovered] = useState(false);
   console.log(isContactHovered, "isContactHovered");
+
   return (
     <header className="bg-gray-800 py-4 text-white flex justify-between items-center">
       <div className="pl-6 flex items-center">
@@ -24,11 +25,78 @@ const Header = () => {
         </motion.div>
         <h1 className="text-2xl font-bold">My Portfolio</h1>
         <motion.div
-          className=""
+          className="mb-4"
           initial={{ x: 0 }}
           animate={{
-            x: isContactHovered ? 1525 : 0,
+            x: isContactHovered ? 1550 : 0,
+            opacity: isContactHovered ? 1 : 0,
             transition: { duration: 0.5 },
+          }}
+        >
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ display: "block", margin: "auto" }}
+          >
+            <circle cx="50" cy="50" r="50" fill="white" />
+          </svg>
+        </motion.div>
+        <motion.div
+          className="mb-4"
+          initial={{ x: 1540, opacity: 0 }}
+          animate={{
+            y: isContactHovered ? 20 : 0,
+            opacity: isContactHovered ? 1 : 0,
+            transition: {
+              y: { duration: 0.2, delay: 0.5 },
+              opacity: { duration: 0.2, delay: 0.5 },
+            },
+          }}
+        >
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ display: "block", margin: "auto" }}
+          >
+            <circle cx="50" cy="50" r="50" fill="white" />
+          </svg>
+        </motion.div>
+        <motion.div
+          className="mb-4"
+          initial={{ x: 1540, y: 20, opacity: 0 }}
+          animate={{
+            x: isContactHovered ? 1610 : 1550,
+            opacity: isContactHovered ? 1 : 0,
+            transition: {
+              x: { duration: 0.2, delay: 0.7 },
+              opacity: { duration: 0.2, delay: 0.7 },
+            },
+          }}
+        >
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ display: "block", margin: "auto" }}
+          >
+            <circle cx="50" cy="50" r="50" fill="white" />
+          </svg>
+        </motion.div>
+        <motion.div
+          className="mb-4"
+          initial={{ x: 1600, y: 20, opacity: 0 }}
+          animate={{
+            y: isContactHovered ? 0 : 20,
+            opacity: isContactHovered ? 1 : 0,
+            transition: {
+              y: { duration: 0.2, delay: 0.9 },
+              opacity: { duration: 0.2, delay: 0.9 },
+            },
           }}
         >
           <svg
