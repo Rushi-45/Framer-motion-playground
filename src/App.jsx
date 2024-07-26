@@ -3,13 +3,13 @@ import "./App.css";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 import Header from "./components/common/Header";
 import "./index.css";
-import ParallaxEffect from "./components/common/ParallaxEffect";
+import Home from "./components/pages/Home";
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <ParallaxEffect />
+      <Home />
       <AnimatedRoutes />
     </Router>
   );

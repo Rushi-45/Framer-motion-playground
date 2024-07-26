@@ -44,59 +44,75 @@ const Home = () => {
 
   return (
     <motion.div
-      className="text-center"
+      className="text-center bg-primary text-secondary pt-8"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.h1
-        className="text-4xl md:text-6xl font-bold mb-4"
-        variants={containerVariants}
-        initial="initial"
-        whileHover="hover"
-      >
-        {splitText(text)}
-      </motion.h1>
-      <div className="flex justify-center mb-6">
-        <CardWithHeader />
-      </div>
       <motion.div
-        className="colorful-button--wrapper"
-        onHoverStart={() => setHovered(true)}
-        onHoverEnd={() => setHovered(false)}
-        whileHover={{
-          transition: { duration: 0.6 },
-        }}
-        whileTap={{ scale: 0.9 }}
+        className="text-center bg-primary text-secondary pt-8"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
       >
-        <div className="colorful-button--color red"></div>
-        <div className="colorful-button--color orange"></div>
-        <div className="colorful-button--color yellow"></div>
-        <div className="colorful-button--color green"></div>
-        <motion.a
-          href="#"
-          className="download-resume"
-          style={{
-            backgroundColor: hovered ? "transparent" : "#3B82F6",
-            color: hovered ? "white" : "white",
-          }}
+        <motion.h1
+          className="text-4xl md:text-6xl font-bold mb-4"
+          variants={containerVariants}
+          initial="initial"
+          whileHover="hover"
         >
-          <motion.div
-            className="button-text primary"
-            initial={{ y: 0 }}
-            animate={{ y: hovered ? -100 : 0, transition: { duration: 0.6 } }}
+          {splitText(text)}
+        </motion.h1>
+        <div className="flex justify-center mb-6">
+          <CardWithHeader />
+        </div>
+        <motion.div
+          className="colorful-button--wrapper"
+          onHoverStart={() => setHovered(true)}
+          onHoverEnd={() => setHovered(false)}
+          whileHover={{
+            transition: { duration: 0.6 },
+          }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <div className="colorful-button--color red"></div>
+          <div className="colorful-button--color orange"></div>
+          <div className="colorful-button--color yellow"></div>
+          <div className="colorful-button--color green"></div>
+          <motion.a
+            href="#"
+            className={`download-resume bg-primary ${
+              hovered ? "text-white" : "text-secondary"
+            }`}
+            style={{
+              backgroundColor: hovered ? "transparent" : "#3B82F6",
+              color: hovered ? "white" : "white",
+            }}
           >
-            Download Resume
-          </motion.div>
-          <motion.div
-            className="button-text secondary"
-            initial={{ y: 100 }}
-            animate={{ y: hovered ? 0 : 100, transition: { duration: 0.6 } }}
-          >
-            Download Resume
-          </motion.div>
-        </motion.a>
+            <motion.div
+              className="button-text primary"
+              initial={{ y: 0 }}
+              animate={{
+                y: hovered ? -100 : 0,
+                transition: { duration: 0.6 },
+              }}
+            >
+              Download Resume
+            </motion.div>
+            <motion.div
+              className="button-text secondary"
+              initial={{ y: 100 }}
+              animate={{
+                y: hovered ? 0 : 100,
+                transition: { duration: 0.6 },
+              }}
+            >
+              Download Resume
+            </motion.div>
+          </motion.a>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
