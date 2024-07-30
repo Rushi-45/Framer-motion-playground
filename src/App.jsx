@@ -9,7 +9,7 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Home />
+      {/* <Home /> */}
       <AnimatedRoutes />
     </Router>
   );

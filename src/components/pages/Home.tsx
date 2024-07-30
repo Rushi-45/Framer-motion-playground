@@ -2,9 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../assets/styles/gradient.css";
 import CardWithHeader from "./CardHeader";
+import { Reveal } from "../common/Reveal";
 
 const Home = () => {
-  const text = "Welcome to My Portfolio";
+  const text = "Hey, I'm Rushi.";
   const [hovered, setHovered] = useState(false);
 
   // Variants for parent container
@@ -51,20 +52,22 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className="text-center bg-primary text-secondary pt-8"
+        className="text-center bg-primary text-secondary pt-8 flex flex-col items-center"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
         transition={{ duration: 0.5 }}
       >
-        <motion.h1
-          className="text-4xl md:text-6xl font-bold mb-4"
-          variants={containerVariants}
-          initial="initial"
-          whileHover="hover"
-        >
-          {splitText(text)}
-        </motion.h1>
+        <Reveal>
+          <motion.h1
+            className="text-4xl md:text-6xl font-bold mb-4"
+            variants={containerVariants}
+            initial="initial"
+            whileHover="hover"
+          >
+            {splitText(text)}
+          </motion.h1>
+        </Reveal>
         <div className="flex justify-center mb-6">
           <CardWithHeader />
         </div>

@@ -28,7 +28,7 @@ const AnimatedRoutes = () => {
               variants={pageTransition}
               transition={{ duration: 0.5 }}
             >
-              {/* <Home /> */}
+              <Home />
             </motion.div>
           }
         />
