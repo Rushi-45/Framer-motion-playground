@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { animate, motion, stagger, useAnimate } from "framer-motion";
 import {
   RiHome2Line,
   RiUserLine,
@@ -9,12 +9,67 @@ import {
 } from "react-icons/ri";
 import { useState } from "react";
 
+const randomNumberBetween = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+type AnimationSequence = Parameters<typeof animate>[0];
 const Header = () => {
   const [isContactHovered, setIsContactHovered] = useState(false);
+  const [scope, animate] = useAnimate();
   console.log(isContactHovered, "isContactHovered");
 
+  const onButtonClick = () => {
+    const sparkles = Array.from({ length: 20 });
+    const sparklesAnimation: AnimationSequence = sparkles.map((_, index) => [
+      `.sparkle-${index}`,
+      {
+        x: randomNumberBetween(-100, 100),
+        y: randomNumberBetween(-100, 100),
+        scale: randomNumberBetween(1.5, 2.5),
+        opacity: 1,
+      },
+      {
+        duration: 0.4,
+        at: "<",
+      },
+    ]);
+
+    const sparklesFadeOut: AnimationSequence = sparkles.map((_, index) => [
+      `.sparkle-${index}`,
+      {
+        opacity: 0,
+        scale: 0,
+      },
+      {
+        duration: 0.3,
+        at: "<",
+      },
+    ]);
+
+    const sparklesReset: AnimationSequence = sparkles.map((_, index) => [
+      `.sparkle-${index}`,
+      {
+        x: 0,
+        y: 0,
+      },
+      {
+        duration: 0.000001,
+      },
+    ]);
+
+    animate([
+      ...sparklesReset,
+      [".letter", { y: -32 }, { duration: 0.2, delay: stagger(0.05) }],
+      ["button", { scale: 0.8 }, { duration: 0.1, at: "<" }],
+      ["button", { scale: 1 }, { duration: 0.1 }],
+      ...sparklesAnimation,
+      [".letter", { y: 0 }, { duration: 0.000001 }],
+      ...sparklesFadeOut,
+    ]);
+  };
   return (
-    <header className="bg-primary-light text-secondary-light py-4 text-white flex justify-between items-center">
+    <header className="bg-primary-light text-secondary-light py-4 flex justify-between items-center">
       <div className="pl-6 flex items-center">
         <motion.div
           whileHover={{ rotate: 540, scale: 1.1 }}
@@ -112,7 +167,9 @@ const Header = () => {
       </div>
 
       <nav className="flex justify-end pr-16">
-        <ul className="flex">
+        <ul className="flex items-center">
+          {" "}
+          {/* Added items-center to vertically align items */}
           <motion.li
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.2 }}
@@ -150,27 +207,59 @@ const Header = () => {
             </Link>
           </motion.li>
           <motion.li
+            ref={scope}
             whileHover={{
               scale: 1.1,
               borderWidth: "1px",
               borderColor: "#4FD1C5",
-              borderRadius: "10px", // Add borderRadius for rounded corners
+              borderRadius: "10px",
             }}
             transition={{
-              duration: 0.7, // Duration for the transition
-              ease: "easeInOut", // Smooth easing function
-              // Apply transition to border properties
+              duration: 0.7,
+              ease: "easeInOut",
               borderWidth: { delay: 0.1, duration: 0.7 },
               borderColor: { delay: 0.1, duration: 0.7 },
               borderRadius: { delay: 0.1, duration: 0.7 },
-              scale: { duration: 0.7, ease: "easeInOut" }, // Ensure scaling is smooth
+              scale: { duration: 0.7, ease: "easeInOut" },
             }}
             onHoverStart={() => setIsContactHovered(true)}
             onHoverEnd={() => setIsContactHovered(false)}
-            className="px-3 radius-md border-transparent" // Set initial border color to transparent
+            className="relative px-3 mx-2 radius-md border-transparent" // Use relative positioning
+            onClick={onButtonClick}
           >
             <Link to="/contact" className="text-white hover:text-yellow-400">
-              Contact
+              <span className="sr-only">Contact</span>
+              <span className="block h-8 overflow-hidden" aria-hidden>
+                {["C", "o", "n", "t", "a", "c", "t"].map((letter, index) => (
+                  <span
+                    data-letter={letter}
+                    className="letter relative inline-block h-8 leading-8 after:absolute after:left-0 after:top-full after:h-8 after:content-[attr(data-letter)]"
+                    key={`${letter}-${index}`}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </span>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10 block"
+              >
+                {Array.from({ length: 20 }).map((_, index) => (
+                  <svg
+                    className={`absolute left-1/2 top-1/2 opacity-0 sparkle-${index}`}
+                    key={index}
+                    viewBox="0 0 122 117"
+                    width="10"
+                    height="10"
+                    style={{ transform: "translate(-50%, -50%)" }}
+                  >
+                    <path
+                      className="fill-blue-600"
+                      d="M64.39,2,80.11,38.76,120,42.33a3.2,3.2,0,0,1,1.83,5.59h0L91.64,74.25l8.92,39a3.2,3.2,0,0,1-4.87,3.4L61.44,96.19,27.09,116.73a3.2,3.2,0,0,1-4.76-3.46h0l8.92-39L1.09,47.92A3.2,3.2,0,0,1,3,42.32l39.74-3.56L58.49,2a3.2,3.2,0,0,1,5.9,0Z"
+                    />
+                  </svg>
+                ))}
+              </span>
             </Link>
           </motion.li>
         </ul>
