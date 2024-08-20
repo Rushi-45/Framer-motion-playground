@@ -213,6 +213,10 @@ const Header = () => {
               borderWidth: "1px",
               borderColor: "#4FD1C5",
               borderRadius: "10px",
+              marginTop: "-1px",
+              marginBottom: "-1px",
+              marginLeft: "-1px",
+              marginRight: "-1px",
             }}
             transition={{
               duration: 0.7,
@@ -221,10 +225,14 @@ const Header = () => {
               borderColor: { delay: 0.1, duration: 0.7 },
               borderRadius: { delay: 0.1, duration: 0.7 },
               scale: { duration: 0.7, ease: "easeInOut" },
+              marginTop: { duration: 0.7 },
+              marginBottom: { duration: 0.7 },
+              marginLeft: { duration: 0.7 },
+              marginRight: { duration: 0.7 },
             }}
             onHoverStart={() => setIsContactHovered(true)}
             onHoverEnd={() => setIsContactHovered(false)}
-            className="relative px-3 mx-2 radius-md border-transparent" // Use relative positioning
+            className="relative px-3 hover:-my-2 mx-2 radius-md border-transparent"
             onClick={onButtonClick}
           >
             <Link to="/contact" className="text-white hover:text-yellow-400">
@@ -254,7 +262,7 @@ const Header = () => {
                     style={{ transform: "translate(-50%, -50%)" }}
                   >
                     <path
-                      className="fill-blue-600"
+                      className="fill-[#4FD1C5]"
                       d="M64.39,2,80.11,38.76,120,42.33a3.2,3.2,0,0,1,1.83,5.59h0L91.64,74.25l8.92,39a3.2,3.2,0,0,1-4.87,3.4L61.44,96.19,27.09,116.73a3.2,3.2,0,0,1-4.76-3.46h0l8.92-39L1.09,47.92A3.2,3.2,0,0,1,3,42.32l39.74-3.56L58.49,2a3.2,3.2,0,0,1,5.9,0Z"
                     />
                   </svg>
