@@ -210,25 +210,12 @@ const Header = () => {
             ref={scope}
             whileHover={{
               scale: 1.1,
-              borderWidth: "1px",
-              borderColor: "#4FD1C5",
-              borderRadius: "10px",
-              marginTop: "-1px",
-              marginBottom: "-1px",
-              marginLeft: "-1px",
-              marginRight: "-1px",
+              boxShadow: "0px 0px 10px 2px #4FD1C5",
             }}
             transition={{
               duration: 0.7,
               ease: "easeInOut",
-              borderWidth: { delay: 0.1, duration: 0.7 },
-              borderColor: { delay: 0.1, duration: 0.7 },
-              borderRadius: { delay: 0.1, duration: 0.7 },
               scale: { duration: 0.7, ease: "easeInOut" },
-              marginTop: { duration: 0.7 },
-              marginBottom: { duration: 0.7 },
-              marginLeft: { duration: 0.7 },
-              marginRight: { duration: 0.7 },
             }}
             onHoverStart={() => setIsContactHovered(true)}
             onHoverEnd={() => setIsContactHovered(false)}

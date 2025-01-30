@@ -1,21 +1,30 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import {
+  animate,
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useTransform,
+} from "framer-motion";
 import "../../assets/styles/gradient.css";
 import CardWithHeader from "./CardHeader";
 import { Reveal } from "../common/Reveal";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import {
-  type Container,
-  type ISourceOptions,
-  MoveDirection,
-  OutMode,
-} from "@tsparticles/engine";
+import { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
 const Home = () => {
-  const text = "Hey, I'm Rushi.";
+  const experience = useMotionValue(0);
+  const roundedExperience = useTransform(experience, Math.round);
+  const [text, setText] = useState(
+    `Hey, I'm Rushi and I have ${roundedExperience.get()} years of experience!`
+  );
+  useMotionValueEvent(roundedExperience, "change", (latest) => {
+    setText(`Hey, I'm Rushi and I have ${latest} years of experience!`);
+  });
+
   const [hovered, setHovered] = useState(false);
   const [init, setInit] = useState(false);
+
   // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -29,6 +38,13 @@ const Home = () => {
     }).then(() => {
       setInit(true);
     });
+
+    const timeout = setTimeout(() => {
+      const experienceAnimation = animate(experience, 3, { duration: 0.5 });
+      return () => experienceAnimation.stop();
+    }, 1000);
+
+    return () => clearTimeout(timeout);
   }, []);
   // Variants for parent container
   const containerVariants = {
@@ -94,7 +110,7 @@ const Home = () => {
           <CardWithHeader />
         </div>
         <motion.div
-          className="colorful-button--wrapper"
+          className="colorful-button--wrapper mb-12"
           onHoverStart={() => setHovered(true)}
           onHoverEnd={() => setHovered(false)}
           whileHover={{
