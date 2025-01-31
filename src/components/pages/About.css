@@ -1,0 +1,57 @@
+.about-container {
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ff6b6b; /* Highlight color */
+}
+
+.intro-section {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 20px 0;
+}
+
+.highlight {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.contact-info {
+  margin-top: 40px;
+}
+
+.contact-info h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  color: #ff6b6b;
+  margin-right: 10px;
+}
+
+.contact-info a {
+  color: #ff6b6b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #ff3b3b;
+}
