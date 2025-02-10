@@ -3,6 +3,7 @@ import "./About.css";
 import { HobbiesSection } from "./Hobbies";
 import HoverDevCards from "../common/HoverFillCards";
 import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
+import SkillsBox from "../common/SkillsBox";
 
 const About = () => {
   return (
@@ -54,34 +55,36 @@ const About = () => {
 
       <HobbiesSection />
 
+      <SkillsBox />
+
       <div className="flex gap-8 w-full place-content-center text-slate-900 mt-12">
         <div className="p-4">
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
             <HoverDevCards
               title="Email"
               subtitle="Get in touch"
-              href="mailto:your.email@example.com"
+              href="mailto:rushi.positive@gmail.com"
               Icon={FiMail}
               color="red"
             />
             <HoverDevCards
               title="LinkedIn"
               subtitle="Professional Profile"
-              href="https://www.linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/rushi-chudasama-63473819a/"
               Icon={FiLinkedin}
               color="blue"
             />
             <HoverDevCards
               title="Instagram"
               subtitle="Follow me"
-              href="https://www.instagram.com/yourusername"
+              href="https://www.instagram.com/rushiii.js"
               Icon={FiInstagram}
               color="pink"
             />
             <HoverDevCards
               title="GitHub"
               subtitle="Open Source Contributions"
-              href="https://github.com/yourusername"
+              href="https://github.com/Rushi-45/"
               Icon={FiGithub}
               color="gray"
             />
