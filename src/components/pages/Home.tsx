@@ -83,7 +83,7 @@ const Home = () => {
 
   return (
     <motion.div
-      className="text-center bg-primary text-secondary pt-8"
+      className="text-center bg-primary text-secondary pt-12"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}

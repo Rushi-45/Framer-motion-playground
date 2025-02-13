@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import { animate, motion, stagger, useAnimate } from "framer-motion";
-import {
-  RiHome2Line,
-  RiUserLine,
-  RiFolderLine,
-  RiFlashlightLine,
-  RiMailLine,
-} from "react-icons/ri";
+import { RiHome2Line } from "react-icons/ri";
 import { useState } from "react";
 
 const randomNumberBetween = (min: number, max: number) => {
@@ -69,7 +63,7 @@ const Header = () => {
     ]);
   };
   return (
-    <header className="bg-primary-light text-secondary-light py-4 flex justify-between items-center">
+    <header className="fixed top-0 left-0 w-full bg-primary-light text-secondary-light py-4 flex justify-between items-center z-50">
       <div className="pl-6 flex items-center">
         <motion.div
           whileHover={{ rotate: 540, scale: 1.1 }}
