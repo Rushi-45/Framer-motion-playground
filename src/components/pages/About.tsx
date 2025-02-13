@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import "./About.css";
 import { HobbiesSection } from "./Hobbies";
 import HoverDevCards from "../common/HoverFillCards";
@@ -6,17 +7,20 @@ import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
 import SkillsBox from "../common/SkillsBox";
 
 const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
       className="about-container bg-primary text-secondary mt-12"
     >
       <motion.h1
         initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ delay: 0.2, duration: 0.5 }}
         className="about-title"
       >
@@ -27,14 +31,14 @@ const About = () => {
         src="/src/assets/images/profile.jpg"
         alt="Rushi Chudasama"
         initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ delay: 0.4, duration: 0.5 }}
         className="w-52 h-52 mx-auto rounded-full border-4 border-accent border-[#ff6b6b] shadow-lg"
       />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.6, duration: 0.5 }}
         className="intro-section"
       >
@@ -54,10 +58,14 @@ const About = () => {
       </motion.div>
 
       <HobbiesSection />
-
       <SkillsBox />
 
-      <div className="flex gap-8 w-full place-content-center text-slate-900 mt-12">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+        className="flex gap-8 w-full place-content-center text-slate-900 mt-12"
+      >
         <div className="p-4">
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
             <HoverDevCards
@@ -90,7 +98,7 @@ const About = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

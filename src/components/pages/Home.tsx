@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   animate,
   motion,
+  useInView,
   useMotionValue,
   useMotionValueEvent,
   useTransform,
@@ -13,6 +14,9 @@ import { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
 const Home = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   const experience = useMotionValue(0);
   const roundedExperience = useTransform(experience, Math.round);
   const [text, setText] = useState(
@@ -111,6 +115,10 @@ const Home = () => {
         </div>
         <motion.div
           className="colorful-button--wrapper mb-12"
+          ref={ref}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1.4 }}
           onHoverStart={() => setHovered(true)}
           onHoverEnd={() => setHovered(false)}
           whileHover={{

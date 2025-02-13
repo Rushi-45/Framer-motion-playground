@@ -6,8 +6,8 @@ import {
   FaCode,
   FaBaseballBall,
 } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, useRef } from "react";
 
 export const hobbies = [
   { name: "Coding & Development", icon: <FaCode /> },
@@ -20,11 +20,14 @@ export const hobbies = [
 
 export const HobbiesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: 0.8, duration: 0.5 }}
       className="hobbies-section"
     >
