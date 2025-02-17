@@ -1,27 +1,13 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const CardWithHeader = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   return (
     <motion.div
       className="flex justify-center flex-col mb-6 max-w-sm "
-      ref={ref}
-      initial={{
-        filter: "drop-shadow(0 0 0rem rgba(255,255,255,0))",
-        opacity: 0,
+      initial={{ filter: "drop-shadow(0 0 0rem rgba(255,255,255,0))" }}
+      animate={{
+        y: ["0px", "15px", "0px"],
       }}
-      animate={
-        isInView
-          ? {
-              y: ["0px", "15px", "0px"],
-              opacity: 1,
-              transition: { duration: 1.4 },
-            }
-          : {}
-      }
       whileHover={{
         filter: "drop-shadow(0 0 0.75rem rgb(255,255,255))",
         transition: { duration: 0.5 },

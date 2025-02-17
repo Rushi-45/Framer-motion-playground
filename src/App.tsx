@@ -15,9 +15,9 @@ const App = () => {
       {/* <Home /> */}
       {/* <AnimatedRoutes /> */}
       <Header />
-      <section id="home" className="min-h-screen bg-primary">
-        <Home />
-      </section>
+      <Home />
+
+      {/* <section className="min-h-screen bg-primary"></section> */}
       <section id="about" className="min-h-screen bg-primary">
         <About />
       </section>

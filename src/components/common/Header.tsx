@@ -5,16 +5,7 @@ import { Link } from "react-scroll";
 const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-primary-light text-secondary-light py-4 flex justify-between items-center z-50">
-      <div className="pl-6 flex items-center">
-        <motion.div
-          whileHover={{ rotate: 540, scale: 1.1 }}
-          whileTap={{ rotate: -540 }}
-          transition={{ duration: 0.5 }}
-        >
-          <RiHome2Line className="text-2xl mr-2" />
-        </motion.div>
-        <h1 className="text-2xl font-bold">My Portfolio</h1>
-      </div>
+      <div className="pl-6 flex items-center"></div>
 
       <nav className="flex justify-end pr-16">
         <ul className="flex items-center">
@@ -26,10 +17,10 @@ const Header = () => {
               className="mr-6"
             >
               <Link
-                to={section} // Match section id
+                to={section}
                 smooth={true}
                 duration={500}
-                offset={-70} // Offset for fixed header
+                offset={-70}
                 className="cursor-pointer text-white hover:text-yellow-400"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
