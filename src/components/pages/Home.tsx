@@ -1,14 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  animate,
-  motion,
-  useInView,
-  useMotionValue,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { useEffect, useState } from "react";
+import { animate, motion, useMotionValue } from "framer-motion";
 import "../../assets/styles/gradient.css";
-import CardWithHeader from "./CardHeader";
 import { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import LandingArea from "./LandingArea";

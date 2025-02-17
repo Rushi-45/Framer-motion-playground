@@ -1,9 +1,9 @@
-import { useScroll, useTransform, motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { Reveal } from "../common/Reveal";
 
 const LandingArea = () => {
-  const [text, setText] = useState(`Hey, I'm Rushi`);
+  const text = `Hey, I'm Rushi`;
 
   // Function to split the text into individual letters
   const splitText = (text: string) => {
