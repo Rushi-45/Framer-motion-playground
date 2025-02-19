@@ -58,8 +58,9 @@ const About = () => {
       </motion.div>
 
       <HobbiesSection />
-      <SkillsBox />
-
+      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg mt-12">
+        <SkillsBox />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}

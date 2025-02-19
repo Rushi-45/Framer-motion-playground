@@ -7,17 +7,19 @@ import About from "./components/pages/About";
 import Projects from "./components/pages/Projects";
 import Skills from "./components/pages/Skills";
 import Contact from "./components/pages/Contact";
+import MainCard from "./components/pages/MainCard";
 
 const App = () => {
   return (
     <Router>
       <Header />
-      {/* <Home /> */}
       {/* <AnimatedRoutes /> */}
-      <Header />
-      <Home />
-
-      {/* <section className="min-h-screen bg-primary"></section> */}
+      <section id="home" className="text-center bg-primary text-secondary">
+        <Home />
+      </section>
+      <section id="main" className="text-center bg-primary text-secondary">
+        <MainCard />
+      </section>
       <section id="about" className="min-h-screen bg-primary">
         <About />
       </section>

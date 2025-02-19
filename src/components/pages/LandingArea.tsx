@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Reveal } from "../common/Reveal";
 
 const LandingArea = () => {
-  const text = `Hey, I'm Rushi`;
+  const text = `Frontend Developer`;
 
-  // Function to split the text into individual letters
   const splitText = (text: string) => {
     return text.split("").map((char, index) => (
       <motion.span
@@ -18,20 +15,19 @@ const LandingArea = () => {
     ));
   };
 
-  // Variants for parent container
   const containerVariants = {
     hover: {
       transition: {
         staggerChildren: 0.02,
       },
     },
+    initial: { y: 0 },
   };
 
-  // Variants for each letter
   const letterVariants = {
     initial: { y: 0 },
     hover: {
-      y: -10,
+      y: -15,
       transition: {
         type: "spring",
         stiffness: 300,
@@ -41,18 +37,16 @@ const LandingArea = () => {
   };
 
   return (
-    <>
-      <Reveal>
-        <motion.h1
-          className="text-4xl md:text-6xl font-bold mb-4 mt-8 flex justify-center items-center"
-          variants={containerVariants}
-          initial="initial"
-          whileHover="hover"
-        >
-          {splitText(text)}
-        </motion.h1>
-      </Reveal>
-    </>
+    <motion.h1
+      className="text-6xl sm:text-7xl md:text-8xl font-bold text-center mb-8 mt-4 flex justify-center items-center"
+      variants={containerVariants}
+      initial={{ opacity: 0, y: 200 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
+      whileHover="hover"
+    >
+      {splitText(text)}
+    </motion.h1>
   );
 };
 

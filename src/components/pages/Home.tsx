@@ -1,49 +1,54 @@
-import { useEffect, useState } from "react";
-import { animate, motion, useMotionValue } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import "../../assets/styles/gradient.css";
-import { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 import LandingArea from "./LandingArea";
-import MainCard from "./MainCard";
+import spinner from "../../assets/images/spinner.webp";
 
 const Home = () => {
-  const experience = useMotionValue(0);
+  const containerRef = useRef(null);
 
-  const [init, setInit] = useState(false);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-  // this should be run only once per application lifetime
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
-      await loadSlim(engine);
-      //await loadBasic(engine);
-    }).then(() => {
-      setInit(true);
-    });
+  const scrollRotation = useTransform(scrollYProgress, [0, 1], [0, 720]);
 
-    const timeout = setTimeout(() => {
-      const experienceAnimation = animate(experience, 3, { duration: 0.5 });
-      return () => experienceAnimation.stop();
-    }, 1000);
+  const smoothRotation = useSpring(scrollRotation, {
+    stiffness: 50,
+    damping: 20,
+  });
 
-    return () => clearTimeout(timeout);
-  }, []);
   return (
     <motion.div
-      className="text-center bg-primary text-secondary pt-12"
+      className="text-center bg-primary text-secondary pt-12 min-h-screen flex flex-col justify-center items-center"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.5 }}
+      ref={containerRef}
     >
-      <div className="flex justify-center items-center">
+      <div className="flex flex-col justify-center items-center">
+        <motion.div
+          className="transform"
+          initial={{ y: "-1rem" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.span className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm backdrop-filter">
+            Hello, I'm Rushi 👋
+          </motion.span>
+        </motion.div>
         <LandingArea />
+
+        <motion.img
+          src={spinner}
+          alt="Rotating Flower"
+          className="w-[35rem] h-[35rem]"
+          style={{ rotate: smoothRotation }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+        />
       </div>
-      <MainCard />
     </motion.div>
   );
 };

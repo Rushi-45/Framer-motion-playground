@@ -9,7 +9,8 @@ export default {
           light: "#1A1A1A", // Slightly lighter variant if needed
         },
         secondary: {
-          DEFAULT: "#38B2AC", // Teal
+          // DEFAULT: "#38B2AC", // Teal
+          DEFAULT: "#fff", // White
           light: "#4FD1C5", // Slightly lighter variant
         },
       },
