@@ -6,7 +6,7 @@ const CardWithHeader = () => {
       className="flex justify-center flex-col mb-6 max-w-sm "
       initial={{ filter: "drop-shadow(0 0 0rem rgba(255,255,255,0))" }}
       animate={{
-        y: ["0px", "15px", "0px"],
+        y: ["0px", "25px", "0px"],
       }}
       whileHover={{
         filter: "drop-shadow(0 0 0.75rem rgb(255,255,255))",

@@ -1,9 +1,12 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import CardWithHeader from "./CardHeader";
 
 export default function MainCard() {
   const [hovered, setHovered] = useState(false);
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
   return (
     <>
       <motion.div
@@ -13,9 +16,20 @@ export default function MainCard() {
         exit={{ opacity: 0, y: 50 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex justify-center mb-6">
+        <motion.div
+          className="flex justify-center mb-6"
+          ref={ref}
+          initial={{ opacity: 0, y: 100, scale: 0.9 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          exit={{ opacity: 0, y: -100 }}
+          transition={{
+            duration: 4,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+        >
           <CardWithHeader />
-        </div>
+        </motion.div>
         <motion.div
           className="colorful-button--wrapper mb-12"
           transition={{ duration: 1.4 }}
@@ -38,6 +52,14 @@ export default function MainCard() {
             style={{
               backgroundColor: hovered ? "transparent" : "#3B82F6",
               color: hovered ? "white" : "white",
+            }}
+            initial={{ opacity: 0, y: 100, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            exit={{ opacity: 0, y: -100 }}
+            transition={{
+              delay: 1,
+              duration: 3,
+              ease: [0.16, 1, 0.3, 1],
             }}
           >
             <motion.div

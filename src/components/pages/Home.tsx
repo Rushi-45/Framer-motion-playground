@@ -4,7 +4,12 @@ import "../../assets/styles/gradient.css";
 import LandingArea from "./LandingArea";
 import spinner from "../../assets/images/spinner.webp";
 
-const Home = () => {
+interface HomeProps {
+  contactEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  contactLeave: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
+
+const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -35,7 +40,11 @@ const Home = () => {
           animate={{ y: 0 }}
           transition={{ duration: 1 }}
         >
-          <motion.span className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm backdrop-filter">
+          <motion.span
+            className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm backdrop-filter"
+            onMouseEnter={contactEnter}
+            onMouseLeave={contactLeave}
+          >
             Hello, I'm Rushi 👋
           </motion.span>
         </motion.div>
