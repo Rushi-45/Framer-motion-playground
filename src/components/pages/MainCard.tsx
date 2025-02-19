@@ -2,7 +2,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import CardWithHeader from "./CardHeader";
 
-export default function MainCard() {
+interface MainCardProps {
+  projectEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  projectLeave: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
+
+const MainCard: React.FC<MainCardProps> = ({ projectEnter, projectLeave }) => {
   const [hovered, setHovered] = useState(false);
   const ref = useRef(null);
 
@@ -19,6 +24,8 @@ export default function MainCard() {
         <motion.div
           className="flex justify-center mb-6"
           ref={ref}
+          onMouseEnter={projectEnter}
+          onMouseLeave={projectLeave}
           initial={{ opacity: 0, y: 100, scale: 0.9 }}
           animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           exit={{ opacity: 0, y: -100 }}
@@ -87,4 +94,5 @@ export default function MainCard() {
       </motion.div>
     </>
   );
-}
+};
+export default MainCard;

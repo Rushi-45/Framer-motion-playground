@@ -44,7 +44,7 @@ const App = () => {
     project: {
       opacity: 1,
       // backgroundColor: "rgba(255, 255, 255, 0.6)",
-      backgroundColor: "#fff",
+      backgroundColor: "#4FD1C5",
       color: "#000",
       height: 80,
       width: 80,
@@ -117,7 +117,7 @@ const App = () => {
           <Home contactEnter={contactEnter} contactLeave={contactLeave} />
         </section>
         <section id="main" className="text-center bg-primary text-secondary">
-          <MainCard />
+          <MainCard projectEnter={projectEnter} projectLeave={projectLeave} />
         </section>
         <section id="about" className="min-h-screen bg-primary">
           <About />
