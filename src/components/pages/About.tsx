@@ -1,65 +1,62 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import "./About.css";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
+import { useEffect, useRef } from "react";
+import myImage from "../../assets/images/profile.jpg";
 import { HobbiesSection } from "./Hobbies";
+import DraggableSkills from "../common/SkillsBox";
 import HoverDevCards from "../common/HoverFillCards";
 import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
-import SkillsBox from "../common/SkillsBox";
 
-const About = () => {
+interface AboutProps {
+  contactEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  contactLeave: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
+
+const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  const experience = useMotionValue(0);
+  const hours = useMotionValue(0);
+  const projects = useMotionValue(0);
+  const clients = useMotionValue(0);
+  const roundedExperience = useTransform(experience, Math.round);
+  const roundedHours = useTransform(hours, Math.round);
+  const roundedProjects = useTransform(projects, Math.round);
+  const roundedClients = useTransform(clients, Math.round);
+
+  useEffect(() => {
+    if (isInView) {
+      const animation1 = animate(experience, 3, { duration: 2.5 });
+      const animation2 = animate(hours, 5000, { duration: 2.5 });
+      const animation3 = animate(projects, 15, { duration: 2.5 });
+      const animation4 = animate(clients, 10, { duration: 2.5 });
+
+      return () => {
+        animation1.stop();
+        animation2.stop();
+        animation3.stop();
+        animation4.stop();
+      };
+    }
+  }, [isInView]);
+
   return (
-    <motion.div
+    <motion.section
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="about-container bg-primary text-secondary mt-12"
+      className="bg-black text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
     >
-      <motion.h1
-        initial={{ opacity: 0, x: -50 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="about-title"
-      >
-        About Me
-      </motion.h1>
-
-      <motion.img
-        src="/src/assets/images/profile.jpg"
-        alt="Rushi Chudasama"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ delay: 0.4, duration: 0.5 }}
-        className="w-52 h-52 mx-auto rounded-full border-4 border-accent border-[#ff6b6b] shadow-lg"
-      />
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 0.6, duration: 0.5 }}
-        className="intro-section"
-      >
-        <p>
-          Hi there! I'm <span className="highlight">Rushi Chudasama</span>, a{" "}
-          <span className="highlight">Front-end Developer</span> with{" "}
-          <span className="highlight">3 years</span> of experience crafting
-          seamless and interactive web experiences. I specialize in{" "}
-          <span className="highlight">
-            React, TypeScript, Redux, and Tailwind CSS
-          </span>
-          , combining clean code with smooth animations using{" "}
-          <span className="highlight">Framer Motion</span>. Whether it's
-          building complex business logic or adding subtle UI interactions, I
-          love bringing ideas to life with precision and creativity.
-        </p>
-      </motion.div>
-
       <HobbiesSection />
-      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg mt-12">
-        <SkillsBox />
+      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg my-12">
+        <DraggableSkills />
       </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -100,7 +97,105 @@ const About = () => {
           </div>
         </div>
       </motion.div>
-    </motion.div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div
+          className="w-[450px] h-[450px] overflow-hidden rounded-lg mx-auto"
+          onMouseEnter={contactEnter}
+          onMouseLeave={contactLeave}
+        >
+          <motion.img
+            src={myImage}
+            alt="Rushi Chudasama"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5 }}
+            className="rounded-lg shadow-lg"
+          />
+        </div>
+        <div>
+          <motion.button
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-1 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm backdrop-filter"
+          >
+            About
+          </motion.button>
+
+          <motion.h1
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-4xl font-medium tracking-tight md:text-5xl"
+          >
+            I am a <span className="text-[#808080]">Front-end Developer</span> &
+            <span className="text-blue-500"> React Enthusiast</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mt-4 text-[#808080] leading-relaxed"
+          >
+            I create dynamic and interactive websites with a focus on{" "}
+            <span className="text-white font-semibold">performance</span> and{" "}
+            <span className="text-white font-semibold">modern UI/UX</span>. I
+            work extensively with{" "}
+            <span className="text-white font-semibold">
+              React, TypeScript, Tailwind CSS, and Framer Motion
+            </span>
+            . My goal is to build smooth, high-quality experiences that users
+            love.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
+            <div>
+              <div className="flex items-center">
+                <motion.p className="text-3xl font-bold text-white">
+                  {roundedExperience}
+                </motion.p>
+                <span className="text-3xl font-bold text-white">+</span>
+              </div>
+
+              <p className="text-gray-400">Years of experience</p>
+            </div>
+            <div>
+              <div className="flex items-center">
+                <motion.p className="text-3xl font-bold text-white">
+                  {roundedClients}
+                </motion.p>
+                <span className="text-3xl font-bold text-white">+</span>
+              </div>
+              <p className="text-gray-400">Clients</p>
+            </div>
+            <div>
+              <div className="flex items-center">
+                <motion.p className="text-3xl font-bold text-white">
+                  {roundedProjects}
+                </motion.p>
+                <span className="text-3xl font-bold text-white">+</span>
+              </div>
+              <p className="text-gray-400">Projects Completed</p>
+            </div>
+            <div>
+              <div className="flex items-center">
+                <motion.p className="text-3xl font-bold text-white">
+                  {roundedHours}
+                </motion.p>
+                <span className="text-3xl font-bold text-white">+</span>
+              </div>
+              <p className="text-gray-400">Hours of Development</p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </motion.section>
   );
 };
 

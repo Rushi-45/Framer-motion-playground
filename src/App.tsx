@@ -33,7 +33,7 @@ const App = () => {
       height: 10,
       width: 10,
       fontSize: "16px",
-      backgroundColor: "#1e91d6",
+      backgroundColor: "white",
       x: mouseXPosition,
       y: mouseYPosition,
       transition: {
@@ -42,9 +42,8 @@ const App = () => {
       },
     },
     project: {
-      opacity: 1,
-      // backgroundColor: "rgba(255, 255, 255, 0.6)",
-      backgroundColor: "#4FD1C5",
+      opacity: 0.2,
+      backgroundColor: "black",
       color: "#000",
       height: 80,
       width: 80,
@@ -70,30 +69,20 @@ const App = () => {
     damping: 28,
   };
 
-  function projectEnter(
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ): void {
-    setCursorText("View");
+  function projectEnter() {
     setCursorVariant("project");
   }
 
-  function projectLeave(
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ): void {
-    setCursorText("");
+  function projectLeave() {
     setCursorVariant("default");
   }
 
-  function contactEnter(
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ): void {
+  function contactEnter() {
     setCursorText("👋");
     setCursorVariant("contact");
   }
 
-  function contactLeave(
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ): void {
+  function contactLeave() {
     setCursorText("");
     setCursorVariant("default");
   }
@@ -103,7 +92,7 @@ const App = () => {
       <div ref={containerRef}>
         <motion.div
           variants={variants}
-          className="fixed z-[100] flex items-center justify-center top-0 left-0 h-[10px] w-[10px] bg-[#38B2AC] rounded-full pointer-events-none text-white text-center text-sm"
+          className="fixed z-[100] flex items-center justify-center top-0 left-0 h-[10px] w-[10px] bg-white rounded-full pointer-events-none text-white text-center text-sm"
           animate={cursorVariant}
           transition={spring}
         >
@@ -120,7 +109,7 @@ const App = () => {
           <MainCard projectEnter={projectEnter} projectLeave={projectLeave} />
         </section>
         <section id="about" className="min-h-screen bg-primary">
-          <About />
+          <About contactEnter={contactEnter} contactLeave={contactLeave} />
         </section>
         <section id="projects" className="min-h-screen ">
           <Projects />
