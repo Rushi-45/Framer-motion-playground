@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { skills } from "../../constants/skills";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import toast, { Toaster } from "react-hot-toast";
 
 const DraggableSkills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [positions, setPositions] = useState(
     skills.map(() => ({
       x: Math.random() * 700 - 350,
@@ -10,8 +13,33 @@ const DraggableSkills = () => {
     }))
   );
 
+  useEffect(() => {
+    if (isInView) {
+      const timeout = setTimeout(() => {
+        toast("Drag the skills to play around!", {
+          position: "bottom-center",
+          duration: 4000,
+          icon: "🖱️",
+          style: {
+            background: "linear-gradient(135deg, #6e45e2, #88d3ce)",
+            color: "#fff",
+            fontWeight: "bold",
+            borderRadius: "8px",
+            padding: "12px 16px",
+            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+            fontSize: "16px",
+          },
+        });
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isInView]);
+
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div ref={ref} className="flex flex-col items-center space-y-4">
+      <Toaster />
+
       <h2 className="text-3xl font-bold text-white">My Tech Stack</h2>
 
       <div className="relative w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg">

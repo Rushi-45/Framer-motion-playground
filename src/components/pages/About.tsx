@@ -54,49 +54,6 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
       transition={{ duration: 0.5 }}
       className="bg-black text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
     >
-      <HobbiesSection />
-      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg my-12">
-        <DraggableSkills />
-      </div>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        className="flex gap-8 w-full place-content-center text-slate-900 mt-12"
-      >
-        <div className="p-4">
-          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-            <HoverDevCards
-              title="Email"
-              subtitle="Get in touch"
-              href="mailto:rushi.positive@gmail.com"
-              Icon={FiMail}
-              color="red"
-            />
-            <HoverDevCards
-              title="LinkedIn"
-              subtitle="Professional Profile"
-              href="https://www.linkedin.com/in/rushi-chudasama-63473819a/"
-              Icon={FiLinkedin}
-              color="blue"
-            />
-            <HoverDevCards
-              title="Instagram"
-              subtitle="Follow me"
-              href="https://www.instagram.com/rushiii.js"
-              Icon={FiInstagram}
-              color="pink"
-            />
-            <HoverDevCards
-              title="GitHub"
-              subtitle="Open Source Contributions"
-              href="https://github.com/Rushi-45/"
-              Icon={FiGithub}
-              color="gray"
-            />
-          </div>
-        </div>
-      </motion.div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div
           className="w-[450px] h-[450px] overflow-hidden rounded-lg mx-auto"
@@ -195,6 +152,49 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
           </motion.div>
         </div>
       </div>
+      <HobbiesSection />
+      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg my-12">
+        <DraggableSkills />
+      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+        className="flex gap-8 w-full place-content-center text-slate-900 mt-12"
+      >
+        <div className="p-4">
+          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+            <HoverDevCards
+              title="Email"
+              subtitle="Get in touch"
+              href="mailto:rushi.positive@gmail.com"
+              Icon={FiMail}
+              color="red"
+            />
+            <HoverDevCards
+              title="LinkedIn"
+              subtitle="Professional Profile"
+              href="https://www.linkedin.com/in/rushi-chudasama-63473819a/"
+              Icon={FiLinkedin}
+              color="blue"
+            />
+            <HoverDevCards
+              title="Instagram"
+              subtitle="Follow me"
+              href="https://www.instagram.com/rushiii.js"
+              Icon={FiInstagram}
+              color="pink"
+            />
+            <HoverDevCards
+              title="GitHub"
+              subtitle="Open Source Contributions"
+              href="https://github.com/Rushi-45/"
+              Icon={FiGithub}
+              color="gray"
+            />
+          </div>
+        </div>
+      </motion.div>
     </motion.section>
   );
 };
