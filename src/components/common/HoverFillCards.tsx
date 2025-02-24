@@ -29,7 +29,7 @@ const HoverDevCards: React.FC<CardProps> = ({
   return (
     <a
       href={href}
-      className="w-full p-4 rounded border-[1px] border-slate-300 relative overflow-hidden group bg-white"
+      className="w-full p-4 rounded border-[1px] border-slate-300 relative overflow-hidden group bg-opacity-55"
     >
       <div
         className={`absolute inset-0 bg-gradient-to-r ${
@@ -40,9 +40,9 @@ const HoverDevCards: React.FC<CardProps> = ({
       />
 
       <Icon
-        className={`absolute z-10 -top-12 -right-12 text-9xl text-slate-100 group-hover:${
+        className={`absolute z-10 -top-12 -right-12 text-9xl text-opacity-55 group-hover:${
           colorMap[color]?.split(" ")[2]
-        } group-hover:rotate-12 transition-transform duration-300`}
+        } group-hover:rotate-12 transition-transform duration-300 group-hover:text-white`}
       />
 
       <Icon

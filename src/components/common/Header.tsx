@@ -31,7 +31,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 flex justify-center z-50">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 flex justify-center z-[1000]">
       <nav className="relative flex items-center space-x-2 rounded-full border border-white/10 bg-white/10 px-6 py-2 backdrop-blur-md shadow-lg">
         {sections.map((section) => (
           <motion.div
