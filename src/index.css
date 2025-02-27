@@ -3,3 +3,13 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+@layer utilities {
+  .bg-custom {
+    background-color: #121212;
+    background-image: url("./assets/images/bg-pattern.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

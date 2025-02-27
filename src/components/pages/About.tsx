@@ -8,7 +8,6 @@ import {
 import { useEffect, useRef } from "react";
 import myImage from "../../assets/images/profile.jpg";
 import { HobbiesSection } from "./Hobbies";
-import DraggableSkills from "../common/SkillsBox";
 import HoverDevCards from "../common/HoverFillCards";
 import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
 
@@ -52,7 +51,7 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="bg-black text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
+      className="text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div
@@ -153,9 +152,7 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
         </div>
       </div>
       <HobbiesSection />
-      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg my-12">
-        <DraggableSkills />
-      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}

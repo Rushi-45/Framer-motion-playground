@@ -7,7 +7,6 @@ import About from "./components/pages/About";
 import Projects from "./components/pages/Projects";
 import Skills from "./components/pages/Skills";
 import Contact from "./components/pages/Contact";
-import MainCard from "./components/pages/MainCard";
 import { useRef, useState } from "react";
 import useMouse from "@react-hook/mouse-position";
 import { motion } from "framer-motion";
@@ -42,8 +41,8 @@ const App = () => {
       },
     },
     project: {
-      opacity: 0.2,
-      backgroundColor: "black",
+      opacity: 0.9,
+      backgroundColor: "#bef264",
       color: "#000",
       height: 80,
       width: 80,
@@ -70,10 +69,12 @@ const App = () => {
   };
 
   function projectEnter() {
+    setCursorText("Drag");
     setCursorVariant("project");
   }
 
   function projectLeave() {
+    setCursorText("");
     setCursorVariant("default");
   }
 
@@ -89,7 +90,7 @@ const App = () => {
 
   return (
     <Router>
-      <div ref={containerRef}>
+      <div ref={containerRef} className="bg-custom">
         <motion.div
           variants={variants}
           className="fixed z-[100] flex items-center justify-center top-0 left-0 h-[10px] w-[10px] bg-white rounded-full pointer-events-none text-white text-center text-sm"
@@ -101,23 +102,19 @@ const App = () => {
           </span>
         </motion.div>
         <Header />
-        {/* <AnimatedRoutes /> */}
-        <section id="home" className="text-center bg-primary text-secondary">
+        <section id="home" className="text-center text-secondary">
           <Home contactEnter={contactEnter} contactLeave={contactLeave} />
         </section>
-        <section id="main" className="text-center bg-primary text-secondary">
-          <MainCard projectEnter={projectEnter} projectLeave={projectLeave} />
-        </section>
-        <section id="about" className="min-h-screen bg-primary">
+        <section id="about" className="min-h-screen ">
           <About contactEnter={contactEnter} contactLeave={contactLeave} />
         </section>
-        <section id="projects" className="min-h-screen ">
-          <Projects />
+        <section id="projects" className="min-h-screen bg-primary">
+          <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
         </section>
-        <section id="skills" className="min-h-screen ">
+        <section id="skills" className="min-h-screen bg-primary">
           <Skills />
         </section>
-        <section id="contact" className="min-h-screen ">
+        <section id="contact" className="min-h-screen bg-primary">
           <Contact />
         </section>
       </div>

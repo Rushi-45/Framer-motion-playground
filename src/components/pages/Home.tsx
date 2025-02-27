@@ -1,5 +1,11 @@
-import { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import "../../assets/styles/gradient.css";
 import LandingArea from "./LandingArea";
 import spinner from "../../assets/images/spinner.webp";
@@ -10,7 +16,11 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
+  const [hovered, setHovered] = useState(false);
+
   const containerRef = useRef(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -26,7 +36,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
 
   return (
     <motion.div
-      className="text-center bg-primary text-secondary pt-12 min-h-screen flex flex-col justify-center items-center"
+      className="text-center text-secondary pt-12 min-h-screen flex flex-col justify-center items-center"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -56,6 +66,61 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           transition={{ duration: 2, ease: "easeInOut" }}
         />
       </div>
+      <motion.div
+        ref={ref}
+        className="colorful-button--wrapper mb-12"
+        transition={{ duration: 1.4 }}
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
+        whileHover={{
+          transition: { duration: 0.6 },
+        }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <div className="colorful-button--color red"></div>
+        <div className="colorful-button--color orange"></div>
+        <div className="colorful-button--color yellow"></div>
+        <div className="colorful-button--color green"></div>
+        <motion.a
+          href="#"
+          className={`download-resume bg-primary ${
+            hovered ? "text-white" : "text-secondary"
+          }`}
+          style={{
+            backgroundColor: hovered ? "transparent" : "#3B82F6",
+            color: hovered ? "white" : "white",
+          }}
+          initial={{ opacity: 0, y: 100, scale: 0.9 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          exit={{ opacity: 0, y: -100 }}
+          transition={{
+            delay: 1,
+            duration: 3,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+        >
+          <motion.div
+            className="button-text primary"
+            initial={{ y: 0 }}
+            animate={{
+              y: hovered ? -100 : 0,
+              transition: { duration: 0.6 },
+            }}
+          >
+            Download Resume
+          </motion.div>
+          <motion.div
+            className="button-text secondary"
+            initial={{ y: 100 }}
+            animate={{
+              y: hovered ? 0 : 100,
+              transition: { duration: 0.6 },
+            }}
+          >
+            Download Resume
+          </motion.div>
+        </motion.a>
+      </motion.div>
     </motion.div>
   );
 };

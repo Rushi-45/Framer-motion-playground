@@ -1,41 +1,27 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import Carousel from "../common/Carousel";
 
-const projects = [
-  {
-    id: 1,
-    name: "Project One",
-    description: "Description of project one",
-    link: "#",
-  },
-  {
-    id: 2,
-    name: "Project Two",
-    description: "Description of project two",
-    link: "#",
-  },
-  // Add more projects as needed
-];
+interface ProjectsProps {
+  projectEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  projectLeave: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
 
-const Projects = () => {
+const Projects: React.FC<ProjectsProps> = ({ projectEnter, projectLeave }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
+      className="bg-primary text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
     >
-      <h1>My Projects</h1>
-      <ul>
-        {projects.map((project) => (
-          <li key={project.id}>
-            <h2>{project.name}</h2>
-            <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              View Project
-            </a>
-          </li>
-        ))}
-      </ul>
+      {/* <MainCard projectEnter={projectEnter} projectLeave={projectLeave} /> */}
+
+      <Carousel projectEnter={projectEnter} projectLeave={projectLeave} />
     </motion.div>
   );
 };
