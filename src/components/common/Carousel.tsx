@@ -3,6 +3,8 @@ import { motion, useMotionValue, useSpring, type PanInfo } from "framer-motion";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { projects } from "../../constants/projects";
+import ShinyButton from "./ShinyButton";
+import SpotlightCard from "./SpotlightCard";
 
 const START_INDEX = 1;
 const DRAG_THRESHOLD = 150;
@@ -102,7 +104,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
       <div className="text-center">
         <h1 className="mt-2 text-6xl font-bold uppercase mb-4">Projects</h1>
       </div>
-      <div className="flex gap-8">
+      <div className="flex gap-8 h-80">
         <div className="relative w-2/3">
           <div className="group container mx-6">
             <div
@@ -147,7 +149,18 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                       )}
                       transition={{
                         ease: "easeInOut",
-                        duration: 0.4,
+                        duration: 0.5,
+                      }}
+                      whileHover={{
+                        scale: 1.05,
+                        y: [-6, 6, -6],
+                        transition: {
+                          y: {
+                            duration: 4,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                          },
+                        },
                       }}
                       style={{
                         flexBasis: active ? "40%" : "30%",
@@ -163,18 +176,17 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                       >
                         <div
                           className={classNames(
-                            "grid place-content-center overflow-hidden rounded-lg bg-gray-900",
+                            "relative grid place-content-center overflow-hidden rounded-lg bg-gray-900 h-80 -mr-20",
                             active ? "aspect-[5/3]" : "aspect-[4/3]"
                           )}
                         >
-                          <span
-                            className={classNames(
-                              "text-xl font-bold",
-                              active && "text-lime-300"
-                            )}
-                          >
-                            {article.title}
-                          </span>
+                          <img
+                            src={article.logo}
+                            alt={article.title}
+                            className="h-60 w-60 object-cover"
+                          />
+
+                          <div className="absolute inset-0 opacity-0 cursor-grab pointer-events-auto"></div>
                         </div>
                       </Link>
                     </motion.li>
@@ -184,31 +196,34 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
             </div>
           </div>
         </div>
-        <motion.div
-          key={activeSlide}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.4 }}
-          className="w-1/3 bg-gray-800 p-6 rounded-lg"
-        >
-          <h2 className="text-xl font-bold text-lime-300">
-            {projects[activeSlide].title}
-          </h2>
-          <p className="mt-2 text-gray-300">
-            {projects[activeSlide].description}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {projects[activeSlide].technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md bg-lime-500 px-2 py-1 text-sm font-semibold text-gray-900"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+        <div className="relative">
+          <SpotlightCard
+            className="custom-spotlight-card"
+            spotlightColor="rgba(0, 229, 255, 0.2)"
+          >
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.4 }}
+              className="w-full h-full bg-gray-800 p-6 rounded-lg "
+            >
+              <h2 className="text-2xl font-bold text-white">
+                {projects[activeSlide].title}
+              </h2>
+
+              <p className="mt-2 text-gray-300">
+                {projects[activeSlide].description}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {projects[activeSlide].technologies.map((tech) => (
+                  <ShinyButton key={tech} title={tech} />
+                ))}
+              </div>
+            </motion.div>
+          </SpotlightCard>
+        </div>
       </div>
     </>
   );

@@ -41,8 +41,8 @@ const App = () => {
       },
     },
     project: {
-      opacity: 0.9,
-      backgroundColor: "#bef264",
+      opacity: 0.8,
+      backgroundColor: "#fff",
       color: "#000",
       height: 80,
       width: 80,
