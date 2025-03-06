@@ -10,6 +10,7 @@ import Contact from "./components/pages/Contact";
 import { useRef, useState } from "react";
 import useMouse from "@react-hook/mouse-position";
 import { motion } from "framer-motion";
+import SpotlightCard from "./components/common/SpotlightCard";
 
 const App = () => {
   const [cursorText, setCursorText] = useState("");
@@ -90,34 +91,40 @@ const App = () => {
 
   return (
     <Router>
-      <div ref={containerRef} className="bg-custom">
-        <motion.div
-          variants={variants}
-          className="fixed z-[100] flex items-center justify-center top-0 left-0 h-[10px] w-[10px] bg-white rounded-full pointer-events-none text-white text-center text-sm"
-          animate={cursorVariant}
-          transition={spring}
-        >
-          <span className="flex-auto text-inherit pointer-events-none m-auto">
-            {cursorText}
-          </span>
-        </motion.div>
-        <Header />
-        <section id="home" className="text-center text-secondary">
-          <Home contactEnter={contactEnter} contactLeave={contactLeave} />
-        </section>
-        <section id="about" className="min-h-screen ">
-          <About contactEnter={contactEnter} contactLeave={contactLeave} />
-        </section>
-        <section id="projects" className="min-h-screen bg-primary">
-          <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
-        </section>
-        <section id="skills" className="min-h-screen bg-primary">
-          <Skills />
-        </section>
-        <section id="contact" className="min-h-screen bg-primary">
-          <Contact />
-        </section>
-      </div>
+      <SpotlightCard
+        className="custom-spotlight-card"
+        // modify this based on designers preference
+        spotlightColor="rgba(0, 229, 255, 0.2)"
+      >
+        <div ref={containerRef} className="bg-custom">
+          <motion.div
+            variants={variants}
+            className="fixed z-[100] flex items-center justify-center top-0 left-0 h-[10px] w-[10px] bg-white rounded-full pointer-events-none text-white text-center text-sm"
+            animate={cursorVariant}
+            transition={spring}
+          >
+            <span className="flex-auto text-inherit pointer-events-none m-auto">
+              {cursorText}
+            </span>
+          </motion.div>
+          <Header />
+          <section id="home" className="text-center text-secondary">
+            <Home contactEnter={contactEnter} contactLeave={contactLeave} />
+          </section>
+          <section id="about" className="min-h-screen ">
+            <About contactEnter={contactEnter} contactLeave={contactLeave} />
+          </section>
+          <section id="projects" className="min-h-screen bg-primary">
+            <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
+          </section>
+          <section id="skills" className="min-h-screen bg-primary">
+            <Skills />
+          </section>
+          <section id="contact" className="min-h-screen bg-primary">
+            <Contact />
+          </section>
+        </div>
+      </SpotlightCard>
     </Router>
   );
 };
