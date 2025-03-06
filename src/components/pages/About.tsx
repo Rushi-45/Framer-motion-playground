@@ -6,10 +6,10 @@ import {
   useTransform,
 } from "framer-motion";
 import { useEffect, useRef } from "react";
-import myImage from "../../assets/images/profile.jpg";
 import { HobbiesSection } from "./Hobbies";
 import HoverDevCards from "../common/HoverFillCards";
 import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
+import { TiltHoverCard } from "../common/TiltHoverCard";
 
 interface AboutProps {
   contactEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -54,20 +54,16 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
       className="text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div
+        <motion.div
           className="w-[450px] h-[450px] overflow-hidden rounded-lg mx-auto"
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5 }}
         >
-          <motion.img
-            src={myImage}
-            alt="Rushi Chudasama"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="rounded-lg shadow-lg"
-          />
-        </div>
+          <TiltHoverCard />
+        </motion.div>
         <div>
           <motion.button
             initial={{ opacity: 0, x: -30 }}
