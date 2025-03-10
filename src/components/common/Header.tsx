@@ -7,6 +7,10 @@ const sections = ["home", "about", "projects", "skills", "contact"];
 const Header = () => {
   const [active, setActive] = useState("home");
 
+  const handleBookCall = () => {
+    window.open("https://calendly.com/rushi-positive", "_blank");
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const currentSection = sections.find((section) => {
@@ -76,6 +80,7 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="relative px-4 py-1.5 text-sm font-light text-white/90 bg-white/10 rounded-full transition-all duration-300 hover:bg-white/15"
+          onClick={handleBookCall}
         >
           Book a Call
           <motion.div className="absolute bottom-0 h-1/3 w-full rounded-full bg-white opacity-30 blur-sm" />

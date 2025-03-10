@@ -1,8 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
+import toast from "react-hot-toast";
 import { useRef, useState } from "react";
 import HoverDevCards from "../common/HoverFillCards";
-import toast from "react-hot-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -49,7 +49,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 px-6">
+    <div className="w-full min-h-screen text-white py-16 px-6">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ const Contact = () => {
           className="flex justify-center items-center p-2"
         >
           <div className="w-full max-w-4xl p-10 bg-opacity-30 bg-white/10 backdrop-blur-lg rounded-xl shadow-xl">
-            <h3 className="text-3xl font-semibold mb-6 text-center">
+            <h3 className="text-2xl font-semibold mb-6 text-center">
               Send Me a Message 📩
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">

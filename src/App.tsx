@@ -11,6 +11,7 @@ import { useRef, useState } from "react";
 import useMouse from "@react-hook/mouse-position";
 import { motion } from "framer-motion";
 import SpotlightCard from "./components/common/SpotlightCard";
+import Footer from "./components/pages/Footer";
 
 const App = () => {
   const [cursorText, setCursorText] = useState("");
@@ -122,6 +123,7 @@ const App = () => {
           <section id="contact" className="min-h-screen">
             <Contact />
           </section>
+          <Footer />
         </div>
       </SpotlightCard>
     </Router>
