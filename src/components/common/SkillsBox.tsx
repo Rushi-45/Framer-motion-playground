@@ -40,9 +40,9 @@ const DraggableSkills = () => {
     <div ref={ref} className="flex flex-col items-center space-y-4">
       <Toaster />
 
-      <h2 className="text-3xl font-bold text-white pb-12">Tech Stack</h2>
+      <h2 className="text-3xl font-bold text-white mb-12">Tech Stack</h2>
 
-      <div className="relative w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg">
+      <div className="relative w-[800px] h-[400px] flex items-center justify-center bg-[#2D3748] rounded-lg">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.id}

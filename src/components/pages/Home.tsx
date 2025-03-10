@@ -94,7 +94,6 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           exit={{ opacity: 0, y: -100 }}
           transition={{
-            delay: 1,
             duration: 3,
             ease: [0.16, 1, 0.3, 1],
           }}

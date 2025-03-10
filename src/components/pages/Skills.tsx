@@ -11,9 +11,9 @@ const Skills = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="bg-primary text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
+      className="text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
     >
-      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center bg-gray-900 rounded-lg my-12">
+      <div className="relative mx-auto w-[800px] h-[400px] flex items-center justify-center rounded-lg">
         <DraggableSkills />
       </div>
     </motion.div>

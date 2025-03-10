@@ -93,7 +93,6 @@ const App = () => {
     <Router>
       <SpotlightCard
         className="custom-spotlight-card"
-        // modify this based on designers preference
         spotlightColor="rgba(0, 229, 255, 0.2)"
       >
         <div ref={containerRef} className="bg-custom">
@@ -114,14 +113,14 @@ const App = () => {
           <section id="about" className="min-h-screen ">
             <About contactEnter={contactEnter} contactLeave={contactLeave} />
           </section>
-          <section id="projects" className="min-h-screen bg-primary">
+          <section id="projects" className="min-h-screen">
             <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
           </section>
-          <section id="skills" className="min-h-screen bg-primary">
+          <section id="skills" className="min-h-screen">
             <Skills />
           </section>
-          <section id="contact" className="min-h-screen bg-primary">
-            <Contact />
+          <section id="contact" className="min-h-screen">
+            <Contact contactEnter={contactEnter} contactLeave={contactLeave} />
           </section>
         </div>
       </SpotlightCard>

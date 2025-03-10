@@ -176,7 +176,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                       >
                         <div
                           className={classNames(
-                            "relative grid place-content-center overflow-hidden rounded-lg bg-gray-900 h-80 -mr-20",
+                            "relative grid place-content-center overflow-hidden rounded-lg bg-[#2D3748]/90 h-80 -mr-20",
                             active ? "aspect-[5/3]" : "aspect-[4/3]"
                           )}
                         >

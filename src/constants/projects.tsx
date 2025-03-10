@@ -80,7 +80,7 @@ export const projects = [
       "Framer Motion",
       "CSS3",
       "HTML5",
-      "PWA (Progressive Web App)",
+      "PWA",
     ],
     description:
       "A Progressive Web App (PWA) for booking sleep pods at Urban Naps. Designed with a seamless UX for users to book pods, check availability, and make online payments.",
