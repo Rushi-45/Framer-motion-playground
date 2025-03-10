@@ -2,22 +2,15 @@ import { motion, useInView } from "framer-motion";
 import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
 import { useRef, useState } from "react";
 import HoverDevCards from "../common/HoverFillCards";
+import toast from "react-hot-toast";
 
-interface ContactProps {
-  contactEnter: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void;
-  contactLeave: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void;
-}
-
-const Contact: React.FC<ContactProps> = ({ contactEnter, contactLeave }) => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -28,10 +21,31 @@ const Contact: React.FC<ContactProps> = ({ contactEnter, contactLeave }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted", formData);
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/rushi.positive@gmail.com",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Failed to send message.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -61,6 +75,9 @@ const Contact: React.FC<ContactProps> = ({ contactEnter, contactLeave }) => {
           className="flex justify-center items-center p-2"
         >
           <div className="w-full max-w-4xl p-10 bg-opacity-30 bg-white/10 backdrop-blur-lg rounded-xl shadow-xl">
+            <h3 className="text-3xl font-semibold mb-6 text-center">
+              Send Me a Message 📩
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -109,16 +126,47 @@ const Contact: React.FC<ContactProps> = ({ contactEnter, contactLeave }) => {
 
               <motion.button
                 type="submit"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0px 0px 10px rgba(0, 229, 255, 0.8)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                onMouseEnter={contactEnter}
-                onMouseLeave={contactLeave}
-                className="w-full bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-lg"
+                whileHover={
+                  !loading
+                    ? {
+                        scale: 1.05,
+                        boxShadow: "0px 0px 10px rgba(0, 229, 255, 0.8)",
+                      }
+                    : {}
+                }
+                whileTap={!loading ? { scale: 0.95 } : {}}
+                disabled={loading}
+                className={`w-full bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-lg ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
-                Send Message
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8H4z"
+                      ></path>
+                    </svg>
+                    Sending...
+                  </div>
+                ) : (
+                  "Send Message"
+                )}
               </motion.button>
             </form>
           </div>

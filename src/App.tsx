@@ -120,7 +120,7 @@ const App = () => {
             <Skills />
           </section>
           <section id="contact" className="min-h-screen">
-            <Contact contactEnter={contactEnter} contactLeave={contactLeave} />
+            <Contact />
           </section>
         </div>
       </SpotlightCard>
