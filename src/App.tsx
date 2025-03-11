@@ -5,13 +5,13 @@ import "./index.css";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Projects from "./components/pages/Projects";
-import Skills from "./components/pages/Skills";
 import Contact from "./components/pages/Contact";
 import { useRef, useState } from "react";
 import useMouse from "@react-hook/mouse-position";
 import { motion } from "framer-motion";
 import SpotlightCard from "./components/common/SpotlightCard";
 import Footer from "./components/pages/Footer";
+import DraggableSkills from "./components/common/SkillsBox";
 
 const App = () => {
   const [cursorText, setCursorText] = useState("");
@@ -118,7 +118,7 @@ const App = () => {
             <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
           </section>
           <section id="skills" className="min-h-screen">
-            <Skills />
+            <DraggableSkills />
           </section>
           <section id="contact" className="min-h-screen">
             <Contact />

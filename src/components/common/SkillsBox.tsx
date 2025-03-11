@@ -37,7 +37,13 @@ const DraggableSkills = () => {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center space-y-4">
+    <motion.div
+      ref={ref}
+      className="flex flex-col items-center space-y-4"
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7 }}
+    >
       <Toaster />
 
       <h2 className="text-3xl font-bold text-white mb-12">Tech Stack</h2>
@@ -61,7 +67,7 @@ const DraggableSkills = () => {
           </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -63,15 +63,6 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
           <TiltHoverCard />
         </motion.div>
         <div>
-          <motion.button
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm backdrop-filter"
-          >
-            About
-          </motion.button>
-
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}

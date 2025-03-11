@@ -12,8 +12,10 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const isInView1 = useInView(ref1, { once: true, amount: 0.2 });
+  const isInView2 = useInView(ref2, { once: true, amount: 0.2 });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -49,7 +51,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full min-h-screen text-white py-16 px-6">
+    <motion.div
+      ref={ref1}
+      className="w-full min-h-screen text-white py-16 px-6"
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView1 ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+    >
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -173,10 +181,10 @@ const Contact = () => {
         </motion.div>
       </motion.div>
       <motion.div
-        ref={ref}
+        ref={ref2}
         initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
+        animate={isInView2 ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7 }}
         className="flex gap-8 w-full place-content-center text-slate-900 mt-12"
       >
         <div className="p-4">
@@ -212,7 +220,7 @@ const Contact = () => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
