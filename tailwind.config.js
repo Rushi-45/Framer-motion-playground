@@ -14,6 +14,15 @@ export default {
           light: "#4FD1C5", // Slightly lighter variant
         },
       },
+      keyframes: {
+        shine: {
+          "0%": { "background-position": "100%" },
+          "100%": { "background-position": "-100%" },
+        },
+      },
+      animation: {
+        shine: "shine 5s linear infinite",
+      },
     },
   },
   plugins: [],
