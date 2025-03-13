@@ -1,25 +1,10 @@
-import {
-  FaMusic,
-  FaBicycle,
-  FaHiking,
-  FaPlane,
-  FaCode,
-  FaBaseballBall,
-} from "react-icons/fa";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useRef } from "react";
-
-export const hobbies = [
-  { name: "Coding & Development", icon: <FaCode /> },
-  { name: "Dancing", icon: <FaMusic /> },
-  { name: "Cycling", icon: <FaBicycle /> },
-  { name: "Hiking", icon: <FaHiking /> },
-  { name: "Traveling", icon: <FaPlane /> },
-  { name: "Cricket Enthusiast", icon: <FaBaseballBall /> },
-];
+import { hobbies } from "../../constants/projects";
 
 export const HobbiesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -29,7 +14,7 @@ export const HobbiesSection = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: 0.8, duration: 0.5 }}
-      className="hobbies-section"
+      className="hobbies-section px-4 sm:px-8 md:px-12 lg:px-16"
     >
       {/* <h2 className="text-2xl font-bold text-center mb-6">What I Love Doing</h2> */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-8">
@@ -58,7 +43,7 @@ export const HobbiesSection = () => {
               <div className="relative z-50">
                 <div className="p-4 flex flex-col items-center">
                   <div className="text-4xl text-red-400 mb-2">{hobby.icon}</div>
-                  <p className="text-white text-lg">{hobby.name}</p>
+                  <p className="text-white text-lg text-center">{hobby.name}</p>
                 </div>
               </div>
             </div>

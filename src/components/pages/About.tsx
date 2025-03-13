@@ -27,6 +27,13 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
   const roundedProjects = useTransform(projects, Math.round);
   const roundedClients = useTransform(clients, Math.round);
 
+  const stats = [
+    { value: roundedExperience, label: "Years of experience" },
+    { value: roundedClients, label: "Clients" },
+    { value: roundedProjects, label: "Projects Completed" },
+    { value: roundedHours, label: "Hours of Development" },
+  ];
+
   useEffect(() => {
     if (isInView) {
       const animation1 = animate(experience, 3, { duration: 2.5 });
@@ -53,7 +60,7 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <motion.div
-          className="w-[450px] h-[450px] overflow-hidden rounded-lg mx-auto"
+          className="w-full max-w-[350px] sm:max-w-[400px] md:max-w-[450px] aspect-square overflow-hidden rounded-lg mx-auto"
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
           initial={{ opacity: 0, scale: 0.8 }}
@@ -94,45 +101,19 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4"
           >
-            <div>
-              <div className="flex items-center">
-                <motion.p className="text-3xl font-bold text-white">
-                  {roundedExperience}
-                </motion.p>
-                <span className="text-3xl font-bold text-white">+</span>
+            {stats.map((item, index) => (
+              <div key={index} className="text-center sm:text-left">
+                <div className="flex justify-center sm:justify-start items-center">
+                  <motion.p className="text-3xl font-bold text-white">
+                    {item.value}
+                  </motion.p>
+                  <span className="text-3xl font-bold text-white">+</span>
+                </div>
+                <p className="text-gray-400">{item.label}</p>
               </div>
-
-              <p className="text-gray-400">Years of experience</p>
-            </div>
-            <div>
-              <div className="flex items-center">
-                <motion.p className="text-3xl font-bold text-white">
-                  {roundedClients}
-                </motion.p>
-                <span className="text-3xl font-bold text-white">+</span>
-              </div>
-              <p className="text-gray-400">Clients</p>
-            </div>
-            <div>
-              <div className="flex items-center">
-                <motion.p className="text-3xl font-bold text-white">
-                  {roundedProjects}
-                </motion.p>
-                <span className="text-3xl font-bold text-white">+</span>
-              </div>
-              <p className="text-gray-400">Projects Completed</p>
-            </div>
-            <div>
-              <div className="flex items-center">
-                <motion.p className="text-3xl font-bold text-white">
-                  {roundedHours}
-                </motion.p>
-                <span className="text-3xl font-bold text-white">+</span>
-              </div>
-              <p className="text-gray-400">Hours of Development</p>
-            </div>
+            ))}
           </motion.div>
         </div>
       </div>

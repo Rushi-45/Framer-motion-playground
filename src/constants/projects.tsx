@@ -3,6 +3,14 @@ import celebalLogo from "../assets/images/celebal-tech.jpg";
 import nflLogo from "../assets/images/nfl.png";
 import solarPanelLogo from "../assets/images/solar-panel.png";
 import urbanNapsLogo from "../assets/images/urban-naps.png";
+import {
+  FaMusic,
+  FaBicycle,
+  FaHiking,
+  FaPlane,
+  FaCode,
+  FaBaseballBall,
+} from "react-icons/fa";
 
 export const projects = [
   {
@@ -85,4 +93,13 @@ export const projects = [
     description:
       "A Progressive Web App (PWA) for booking sleep pods at Urban Naps. Designed with a seamless UX for users to book pods, check availability, and make online payments.",
   },
+];
+
+export const hobbies = [
+  { name: "Coding & Development", icon: <FaCode /> },
+  { name: "Dancing", icon: <FaMusic /> },
+  { name: "Cycling", icon: <FaBicycle /> },
+  { name: "Hiking", icon: <FaHiking /> },
+  { name: "Traveling", icon: <FaPlane /> },
+  { name: "Cricket Enthusiast", icon: <FaBaseballBall /> },
 ];

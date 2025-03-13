@@ -17,7 +17,7 @@ const Projects: React.FC<ProjectsProps> = ({ projectEnter, projectLeave }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="text-white py-16 px-8 md:px-16 lg:px-32 rounded-lg"
+      className="text-white py-12 px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto"
     >
       {/* <MainCard projectEnter={projectEnter} projectLeave={projectLeave} /> */}
 
