@@ -3,12 +3,12 @@
   z-index: 2;
   display: inline-block;
   padding: 10px 20px;
-  background-color: #3B82F6; 
+  background-color: #3b82f6;
   color: white;
   text-decoration: none;
   border-radius: 8px;
-  transition: background-color 2s ease, color 2s ease; 
-  overflow: hidden; 
+  transition: background-color 2s ease, color 2s ease;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,8 +33,13 @@
 
 .colorful-button--wrapper {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .colorful-button--color {
@@ -42,13 +47,15 @@
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100%;
   height: 100%;
+  border-radius: 8px;
   transition: transform 0.3s ease;
   transform: scale(0);
 }
 
 .colorful-button--wrapper:hover .colorful-button--color {
-  transform: scale(1); 
+  transform: scale(1);
 }
 
 .colorful-button--wrapper:hover .red {
@@ -174,4 +181,3 @@
 .text-gray-800 {
   color: #2d3748;
 }
-

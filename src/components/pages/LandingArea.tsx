@@ -38,7 +38,7 @@ const LandingArea = () => {
 
   return (
     <motion.h1
-      className="text-6xl sm:text-7xl md:text-8xl font-bold text-center mb-8 mt-4 flex justify-center items-center"
+      className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center mb-6 sm:mb-8 mt-2 sm:mt-4 flex justify-center items-center"
       variants={containerVariants}
       initial={{ opacity: 0, y: 200 }}
       animate={{ opacity: 1, y: 0 }}

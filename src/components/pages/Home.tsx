@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
 
   return (
     <motion.div
-      className="text-center text-secondary pt-12 min-h-screen flex flex-col justify-center items-center"
+      className="text-center text-secondary pt-12 min-h-screen flex flex-col justify-center items-center px-4 md:px-8"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -52,23 +52,25 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
         >
-          <motion.span className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm backdrop-filter">
+          <motion.span className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm">
             Hello, I'm Rushi 👋
           </motion.span>
         </motion.div>
+
         <LandingArea />
 
         <motion.img
           src={spinner}
           alt="Rotating Flower"
-          className="w-[35rem] h-[35rem]"
+          className="w-[15rem] h-[15rem] sm:w-[20rem] sm:h-[20rem] md:w-[30rem] md:h-[30rem] lg:w-[35rem] lg:h-[35rem]"
           style={{ rotate: smoothRotation }}
           transition={{ duration: 2, ease: "easeInOut" }}
         />
       </div>
+
       <motion.div
         ref={ref}
-        className="colorful-button--wrapper mb-12"
+        className="colorful-button--wrapper mt-6 mb-12 flex justify-center w-full"
         transition={{ duration: 1.4 }}
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
@@ -77,48 +79,50 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
         }}
         whileTap={{ scale: 0.9 }}
       >
-        <div className="colorful-button--color red"></div>
-        <div className="colorful-button--color orange"></div>
-        <div className="colorful-button--color yellow"></div>
-        <div className="colorful-button--color green"></div>
-        <motion.a
-          href="#"
-          className={`download-resume bg-primary ${
-            hovered ? "text-white" : "text-secondary"
-          }`}
-          style={{
-            backgroundColor: hovered ? "transparent" : "#3B82F6",
-            color: hovered ? "white" : "white",
-          }}
-          initial={{ opacity: 0, y: 100, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-          exit={{ opacity: 0, y: -100 }}
-          transition={{
-            duration: 3,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        >
-          <motion.div
-            className="button-text primary"
-            initial={{ y: 0 }}
-            animate={{
-              y: hovered ? -100 : 0,
-              transition: { duration: 0.6 },
+        <div className="flex justify-center w-full">
+          <div className="colorful-button--color red"></div>
+          <div className="colorful-button--color orange"></div>
+          <div className="colorful-button--color yellow"></div>
+          <div className="colorful-button--color green"></div>
+          <motion.a
+            href="#"
+            className={`download-resume bg-primary ${
+              hovered ? "text-white" : "text-secondary"
+            } flex items-center justify-center px-6 py-3 rounded-lg font-medium `}
+            style={{
+              backgroundColor: hovered ? "transparent" : "#3B82F6",
+              color: hovered ? "white" : "white",
+            }}
+            initial={{ opacity: 0, y: 100, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            exit={{ opacity: 0, y: -100 }}
+            transition={{
+              duration: 3,
+              ease: [0.16, 1, 0.3, 1],
             }}
           >
-            Download Resume
-          </motion.div>
-          <motion.div
-            className="button-text secondary"
-            initial={{ y: 100 }}
-            animate={{
-              y: hovered ? 0 : 100,
-              transition: { duration: 0.6 },
-            }}
-          >
-            Download Resume
-          </motion.div>
-        </motion.a>
+            <motion.div
+              className="button-text primary"
+              initial={{ y: 0 }}
+              animate={{
+                y: hovered ? -100 : 0,
+                transition: { duration: 0.6 },
+              }}
+            >
+              Download Resume
+            </motion.div>
+            <motion.div
+              className="button-text secondary"
+              initial={{ y: 100 }}
+              animate={{
+                y: hovered ? 0 : 100,
+                transition: { duration: 0.6 },
+              }}
+            >
+              Download Resume
+            </motion.div>
+          </motion.a>
+        </div>
       </motion.div>
     </motion.div>
   );
