@@ -106,7 +106,7 @@ const DraggableSkills = () => {
     >
       <Toaster />
 
-      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 sm:mb-12">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12">
         Tech Stack
       </h2>
 

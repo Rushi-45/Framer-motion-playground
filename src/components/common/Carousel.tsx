@@ -102,7 +102,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
   return (
     <>
       <div className="text-center">
-        <h1 className="mt-2 text-4xl sm:text-5xl md:text-6xl font-bold uppercase mb-4">
+        <h1 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold uppercase mb-4">
           Projects
         </h1>
       </div>

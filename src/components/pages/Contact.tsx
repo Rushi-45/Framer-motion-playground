@@ -64,8 +64,10 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h2 className="text-5xl font-extrabold">Let's Connect 🚀</h2>
-        <p className="text-gray-400 mt-3 text-lg">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+          Let's Connect 🚀
+        </h2>
+        <p className="text-gray-400 mt-3 text-base sm:text-lg">
           Got a project? Want to collaborate? Drop a message!
         </p>
       </motion.div>
@@ -74,7 +76,7 @@ const Contact = () => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto gap-12 p-8 bg-opacity-30 bg-white/10 backdrop-blur-lg rounded-xl shadow-xl"
+        className="max-w-4xl mx-auto gap-12 p-2 sm:p-8 bg-opacity-30 bg-white/10 backdrop-blur-lg rounded-xl shadow-xl"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -82,11 +84,11 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="flex justify-center items-center p-2"
         >
-          <div className="w-full max-w-4xl p-10 bg-opacity-30 bg-white/10 backdrop-blur-lg rounded-xl shadow-xl">
-            <h3 className="text-2xl font-semibold mb-6 text-center">
+          <div className="w-full max-w-4xl p-8 sm:p-10 bg-opacity-30 bg-white/10 backdrop-blur-lg rounded-xl shadow-xl">
+            <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-center">
               Send Me a Message 📩
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
@@ -129,7 +131,7 @@ const Contact = () => {
                   required
                   rows={4}
                   className="w-full px-5 py-3 rounded-lg border border-gray-500 bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                ></textarea>
+                />
               </motion.div>
 
               <motion.button
