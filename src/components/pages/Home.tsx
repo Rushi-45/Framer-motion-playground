@@ -52,9 +52,9 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
         >
-          <motion.span className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm">
+          <motion.h1 className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm">
             Hello, I'm Rushi 👋
-          </motion.span>
+          </motion.h1>
         </motion.div>
 
         <LandingArea />
