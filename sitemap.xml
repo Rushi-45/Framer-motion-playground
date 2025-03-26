@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://rushis-portfolio.netlify.app/</loc>
-        <lastmod>2025-03-12</lastmod>
+        <lastmod>2024-03-24</lastmod>
         <priority>1.0</priority>
-    </url>
+    </url>    
     <url>
         <loc>https://rushis-portfolio.netlify.app/projects</loc>
         <priority>0.8</priority>

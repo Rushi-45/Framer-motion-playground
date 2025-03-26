@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rushis-portfolio.netlify.app/sitemap.xml
