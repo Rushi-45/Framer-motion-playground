@@ -3,6 +3,11 @@ import celebalLogo from "../assets/images/celebal-tech.jpg";
 import nflLogo from "../assets/images/nfl.png";
 import solarPanelLogo from "../assets/images/solar-panel.png";
 import urbanNapsLogo from "../assets/images/urban-naps.png";
+import shopEaseLogo from "../assets/images/shop-ease.png";
+import mediTrackLogo from "../assets/images/medi-track.png";
+import learnifyLogo from "../assets/images/learnify.png";
+import smartHomeLogo from "../assets/images/smart-home.png";
+import loveAiLogo from "../assets/images/love-ai.png";
 import {
   FaMusic,
   FaBicycle,
@@ -15,7 +20,6 @@ import {
 export const projects = [
   {
     title: "VisiLean",
-    url: "https://visilean.com/",
     logo: visileanLogo,
     technologies: [
       "React.js",
@@ -33,7 +37,6 @@ export const projects = [
   },
   {
     title: "NFL Fantasy Gaming",
-    url: "",
     logo: nflLogo,
     technologies: [
       "React.js",
@@ -50,7 +53,6 @@ export const projects = [
   },
   {
     title: "Profit & Loss Dashboard",
-    url: "",
     logo: celebalLogo,
     technologies: [
       "React.js",
@@ -64,7 +66,6 @@ export const projects = [
   },
   {
     title: "Crack Detection in Solar Panels",
-    url: "",
     logo: solarPanelLogo,
     technologies: [
       "React.js",
@@ -78,7 +79,6 @@ export const projects = [
   },
   {
     title: "Urban Naps - Pod Booking",
-    url: "https://urbannaps.com/",
     logo: urbanNapsLogo,
     technologies: [
       "React.js",
@@ -92,6 +92,51 @@ export const projects = [
     ],
     description:
       "A Progressive Web App (PWA) for booking sleep pods at Urban Naps. Designed with a seamless UX for users to book pods, check availability, and make online payments.",
+  },
+  {
+    title: "ShopEase - E-commerce Platform",
+    logo: shopEaseLogo,
+    technologies: ["React.js", "Redux", "TypeScript", "Tailwind CSS"],
+    description:
+      "A scalable e-commerce platform with real-time inventory, secure payments, and personalized recommendations.",
+  },
+  {
+    title: "MediTrack - Healthcare Portal",
+    logo: mediTrackLogo,
+    technologies: ["React.js", "TypeScript", "Next.js", "Chakra UI", "GraphQL"],
+    description:
+      "A healthcare portal for patients and doctors to manage appointments, prescriptions, and health records securely.",
+  },
+  {
+    title: "Learnify - EdTech LMS",
+    logo: learnifyLogo,
+    technologies: ["React.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    description:
+      "A modern Learning Management System (LMS) for online courses, quizzes, and student progress tracking.",
+  },
+  {
+    title: "SmartHome IoT Dashboard",
+    logo: smartHomeLogo,
+    technologies: ["React.js", "TypeScript", "Socket.io", "Tailwind CSS"],
+    description:
+      "A real-time dashboard for monitoring and controlling smart home devices, energy usage, and automation routines.",
+  },
+  {
+    title: "Love AI - Dating App",
+    logo: loveAiLogo,
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "Tailwind",
+      "Framer Motion",
+      "matter-js",
+      "socket.io",
+    ],
+    description:
+      "A modern dating app that uses AI to match users based on interests, behavior, and preferences.",
   },
 ];
 

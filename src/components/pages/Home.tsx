@@ -9,6 +9,7 @@ import {
 import "../../assets/styles/gradient.css";
 import LandingArea from "./LandingArea";
 import spinner from "../../assets/images/spinner.webp";
+import TypewriterText from "../common/TypewriterText";
 
 interface HomeProps {
   contactEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -57,7 +58,20 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           </motion.h1>
         </motion.div>
 
-        <LandingArea />
+        {/* <LandingArea /> */}
+
+        <div className="mt-4">
+          <TypewriterText
+            text={[
+              "Frontend Developer",
+              "React Enthusiast",
+              "TypeScript Advocate",
+              "Performance Optimizer",
+              "CSS Wizard",
+            ]}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center"
+          />
+        </div>
 
         <motion.img
           src={spinner}
