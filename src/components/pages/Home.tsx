@@ -99,7 +99,9 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           <div className="colorful-button--color yellow"></div>
           <div className="colorful-button--color green"></div>
           <motion.a
-            href="#"
+            href="https://drive.google.com/uc?export=download&id=1iY7JNyRN9LYdmga4OZnurTK5yfXTGeqw"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`download-resume bg-primary ${
               hovered ? "text-white" : "text-secondary"
             } flex items-center justify-center px-6 py-3 rounded-lg font-medium `}
