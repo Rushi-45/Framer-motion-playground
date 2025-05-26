@@ -197,6 +197,8 @@ const Contact = () => {
               href="mailto:rushi.positive@gmail.com"
               Icon={FiMail}
               color="red"
+              target="_blank"
+              rel="noopener noreferrer"
             />
             <HoverDevCards
               title="LinkedIn"
@@ -204,6 +206,8 @@ const Contact = () => {
               href="https://www.linkedin.com/in/rushi-chudasama-63473819a/"
               Icon={FiLinkedin}
               color="blue"
+              target="_blank"
+              rel="noopener noreferrer"
             />
             <HoverDevCards
               title="Instagram"
@@ -211,6 +215,8 @@ const Contact = () => {
               href="https://www.instagram.com/rushiii.js"
               Icon={FiInstagram}
               color="pink"
+              target="_blank"
+              rel="noopener noreferrer"
             />
             <HoverDevCards
               title="GitHub"
@@ -218,6 +224,8 @@ const Contact = () => {
               href="https://github.com/Rushi-45/"
               Icon={FiGithub}
               color="gray"
+              target="_blank"
+              rel="noopener noreferrer"
             />
           </div>
         </div>

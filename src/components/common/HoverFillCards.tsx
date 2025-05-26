@@ -6,6 +6,8 @@ interface CardProps {
   Icon: any;
   href: string;
   color: "red" | "blue" | "violet" | "green" | "pink" | "gray";
+  target?: string;
+  rel?: string;
 }
 
 const colorMap = {
@@ -25,11 +27,15 @@ const HoverDevCards: React.FC<CardProps> = ({
   Icon,
   href,
   color,
+  target,
+  rel,
 }) => {
   return (
     <a
       href={href}
       className="w-full p-4 rounded-sm border border-slate-300 relative overflow-hidden group bg-opacity-55"
+      {...(target ? { target } : {})}
+      {...(rel ? { rel } : {})}
     >
       <div
         className={`absolute inset-0 bg-linear-to-r ${

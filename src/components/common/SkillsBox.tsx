@@ -13,10 +13,34 @@ const SKILL_SIZE = 64; // px, adjust as needed
 
 const DraggableSkills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [engine] = useState(() => Engine.create());
   const [positions, setPositions] = useState<{ x: number; y: number }[]>([]);
   const [bodies, setBodies] = useState<Matter.Body[]>([]);
   const [isReady, setIsReady] = useState(false);
+  const [physicsActive, setPhysicsActive] = useState(false);
+
+  useEffect(() => {
+    const ref = sectionRef.current;
+    if (!ref) return;
+    let timeout: number;
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          timeout = setTimeout(() => setPhysicsActive(true), 1000);
+        } else {
+          setPhysicsActive(false);
+          clearTimeout(timeout);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(ref);
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+    };
+  }, []);
 
   // Set up Matter.js world and bodies
   useEffect(() => {
@@ -89,10 +113,12 @@ const DraggableSkills = () => {
     // Animation loop
     let frameId: number;
     const update = () => {
-      Engine.update(engine, 1000 / 60);
-      setPositions(
-        initialBodies.map((b) => ({ x: b.position.x, y: b.position.y }))
-      );
+      if (physicsActive) {
+        Engine.update(engine, 1000 / 60);
+        setPositions(
+          initialBodies.map((b) => ({ x: b.position.x, y: b.position.y }))
+        );
+      }
       frameId = requestAnimationFrame(update);
     };
     update();
@@ -104,7 +130,7 @@ const DraggableSkills = () => {
       Engine.clear(engine);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [containerRef.current]);
+  }, [containerRef.current, physicsActive]);
 
   // Toast on mount
   useEffect(() => {
@@ -149,7 +175,7 @@ const DraggableSkills = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center space-y-4 px-4">
+    <div ref={sectionRef} className="flex flex-col items-center space-y-4 px-4">
       <Toaster />
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12">
         Tech Stack
@@ -171,19 +197,26 @@ const DraggableSkills = () => {
           skills.map((skill, i) => (
             <div
               key={skill.id}
-              className={`absolute w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center ${skill.bgColor} rounded-full shadow-lg cursor-grab active:cursor-grabbing select-none`}
+              className={`absolute w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center ${skill.bgColor} rounded-full shadow-lg cursor-grab active:cursor-grabbing select-none group`}
               style={{
                 left: `${positions[i].x - SKILL_SIZE / 2}px`,
                 top: `${positions[i].y - SKILL_SIZE / 2}px`,
                 transition: "box-shadow 0.2s",
                 zIndex: 2,
               }}
+              tabIndex={0}
+              aria-label={skill.name}
+              title={skill.name}
             >
               {skill.icon &&
                 React.cloneElement(skill.icon, {
                   size: window.innerWidth < 400 ? 30 : 40,
                   className: `sm:text-2xl ${skill.textColor}`,
                 })}
+              {/* Tooltip */}
+              <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-black text-white text-xs opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition pointer-events-none z-10 whitespace-nowrap">
+                {skill.name}
+              </span>
             </div>
           ))}
       </div>

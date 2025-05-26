@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import myImage from "../../assets/images/profile.jpg";
 import { useRef } from "react";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 export const TiltHoverCard = () => {
   const ROTATION_RANGE = 32.5;
@@ -46,7 +47,7 @@ export const TiltHoverCard = () => {
   return (
     <motion.div
       ref={ref}
-      className="relative h-full w-full rounded-xl bg-transparent"
+      className="relative h-full w-full rounded-xl bg-transparent group focus:outline-none"
       transition={{ duration: 0.4, ease: "easeOut" }}
       style={{
         transformStyle: "preserve-3d",
@@ -54,18 +55,20 @@ export const TiltHoverCard = () => {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      tabIndex={0}
+      aria-label="Rushi Chudasama profile card"
     >
       <div
         style={{
           transform: "translateZ(75px)",
           transformStyle: "preserve-3d",
         }}
-        className="absolute inset-4 grid place-content-center rounded-xl bg-white shadow-lg"
+        className="absolute inset-4 grid place-content-center rounded-xl bg-white shadow-lg group-hover:shadow-2xl group-hover:shadow-blue-300 transition-shadow duration-300"
       >
         <motion.img
           src={myImage}
           alt="Rushi Chudasama"
-          className="mx-auto text-4xl text-black"
+          className="mx-auto text-4xl text-black rounded-full shadow"
           style={{ transform: "translateZ(75px)" }}
         />
       </div>

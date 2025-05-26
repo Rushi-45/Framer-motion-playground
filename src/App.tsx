@@ -16,9 +16,9 @@ import DraggableSkills from "./components/common/SkillsBox";
 const App = () => {
   const [cursorText, setCursorText] = useState("");
   const [cursorVariant, setCursorVariant] = useState("default");
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const mouse = useMouse(containerRef, {
+  const mouse = useMouse(containerRef as React.RefObject<HTMLElement>, {
     enterDelay: 100,
     leaveDelay: 100,
   });

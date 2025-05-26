@@ -149,6 +149,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                       }}
                       className={classNames(
                         "group relative shrink-0 select-none px-2 sm:px-3 transition-opacity duration-300",
+                        "basis-full sm:basis-1/2 lg:basis-1/3 max-w-full",
                         !active && "opacity-30"
                       )}
                       transition={{
@@ -166,16 +167,8 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                           },
                         },
                       }}
-                      style={{ flexBasis: active ? "60%" : "40%" }}
                     >
-                      <Link
-                        to={article.url}
-                        className="block"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        draggable={false}
-                        onClick={disableDragClick}
-                      >
+                      <div className="block" tabIndex={0} draggable={false}>
                         <div className="relative grid place-content-center overflow-hidden rounded-lg bg-[#2D3748]/90 w-full h-60 sm:h-72 lg:h-80">
                           <img
                             src={article.logo}
@@ -185,7 +178,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
 
                           <div className="absolute inset-0 opacity-0 cursor-grab pointer-events-auto"></div>
                         </div>
-                      </Link>
+                      </div>
                     </motion.li>
                   );
                 })}
