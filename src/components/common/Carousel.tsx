@@ -144,7 +144,9 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                     <motion.li
                       layout
                       key={article.title}
-                      ref={(el) => (itemsRef.current[index] = el)}
+                      ref={(el) => {
+                        itemsRef.current[index] = el;
+                      }}
                       className={classNames(
                         "group relative shrink-0 select-none px-2 sm:px-3 transition-opacity duration-300",
                         !active && "opacity-30"
