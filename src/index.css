@@ -1,15 +1,46 @@
-@import "tailwindcss/base";
+@import 'tailwindcss';
 
-@import "tailwindcss/components";
+@theme {
+  --color-primary: #121212;
+  --color-primary-light: #1a1a1a;
 
-@import "tailwindcss/utilities";
+  --color-secondary: #fff;
+  --color-secondary-light: #4fd1c5;
 
-@layer utilities {
-  .bg-custom {
-    background-color: #121212;
-    background-image: url("./assets/images/bg-pattern.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  --animate-shine: shine 5s linear infinite;
+
+  @keyframes shine {
+    0% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: -100%;
+    }
   }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility bg-custom {
+  background-color: #121212;
+  background-image: url('./assets/images/bg-pattern.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

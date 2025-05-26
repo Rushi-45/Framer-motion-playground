@@ -99,7 +99,7 @@ const App = () => {
         <div ref={containerRef} className="bg-custom">
           <motion.div
             variants={variants}
-            className="fixed z-[100] flex items-center justify-center top-0 left-0 h-[10px] w-[10px] bg-white rounded-full pointer-events-none text-white text-center text-sm"
+            className="fixed z-100 flex items-center justify-center top-0 left-0 h-[10px] w-[10px] bg-white rounded-full pointer-events-none text-white text-center text-sm"
             animate={cursorVariant}
             transition={spring}
           >

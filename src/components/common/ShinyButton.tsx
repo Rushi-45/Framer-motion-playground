@@ -29,7 +29,7 @@ const ShinyButton: React.FC<ShinyButtonProps> = ({ title }) => {
           initial={{ x: "-150%" }}
           animate={{ x: "150%" }}
           transition={{ duration: 1.2, ease: "linear" }}
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-full h-full"
+          className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent w-full h-full"
         />
       )}
     </motion.button>

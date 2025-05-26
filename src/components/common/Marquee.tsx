@@ -7,7 +7,7 @@ interface MarqueeProps {
 
 const Marquee = ({ text, speed = 6 }: MarqueeProps) => {
   return (
-    <div className="relative w-80 overflow-hidden bg-gray-100 p-2 rounded-full border border-neutral-300 shadow-sm flex items-center">
+    <div className="relative w-80 overflow-hidden bg-gray-100 p-2 rounded-full border border-neutral-300 shadow-xs flex items-center">
       <div className="relative flex items-center space-x-2 pl-4">
         <div className="relative">
           <div className="size-4 rounded-full bg-green-400"></div>

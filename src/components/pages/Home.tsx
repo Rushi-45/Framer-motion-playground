@@ -52,7 +52,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
         >
-          <motion.h1 className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-sm">
+          <motion.h1 className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-xs">
             Hello, I'm Rushi 👋
           </motion.h1>
         </motion.div>
@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
         <motion.img
           src={spinner}
           alt="Rotating Flower"
-          className="w-[15rem] h-[15rem] sm:w-[20rem] sm:h-[20rem] md:w-[30rem] md:h-[30rem] lg:w-[35rem] lg:h-[35rem]"
+          className="w-60 h-60 sm:w-[20rem] sm:h-80 md:w-120 md:h-120 lg:w-140 lg:h-140"
           style={{ rotate: smoothRotation }}
           transition={{ duration: 2, ease: "easeInOut" }}
         />

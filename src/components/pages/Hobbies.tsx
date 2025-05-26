@@ -39,7 +39,7 @@ export const HobbiesSection = () => {
                 />
               )}
             </AnimatePresence>
-            <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-gradient-to-br from-[#2D3748]/40 to-[#2D3748] border border-transparent group-hover:border-slate-700 relative z-50 flex flex-col items-center justify-center">
+            <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-linear-to-br from-[#2D3748]/40 to-[#2D3748] border border-transparent group-hover:border-slate-700 relative z-50 flex flex-col items-center justify-center">
               <div className="relative z-50">
                 <div className="p-4 flex flex-col items-center">
                   <div className="text-4xl text-red-400 mb-2">{hobby.icon}</div>

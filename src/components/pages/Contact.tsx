@@ -146,7 +146,7 @@ const Contact = () => {
                 }
                 whileTap={!loading ? { scale: 0.95 } : {}}
                 disabled={loading}
-                className={`w-full bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-lg ${
+                className={`w-full bg-linear-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-lg ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >

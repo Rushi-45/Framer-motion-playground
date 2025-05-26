@@ -71,9 +71,9 @@ const Header = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 flex justify-between items-center w-full px-6 md:px-0 md:justify-center z-[1000]">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 flex justify-between items-center w-full px-6 md:px-0 md:justify-center z-1000">
       <motion.button
-        className="md:hidden absolute left-6 top-3 text-white text-2xl z-[1001]"
+        className="md:hidden absolute left-6 top-3 text-white text-2xl z-1001"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
         transition={{ duration: 0.3 }}
@@ -93,7 +93,7 @@ const Header = () => {
             animate="open"
             exit="exit"
             variants={sidebarVariants}
-            className="fixed pt-16 -top-4 -left-[4px] h-screen w-64 bg-gradient-to-br from-black/80 to-gray-900/90 text-white flex flex-col items-start p-8 rounded-lg backdrop-blur-lg shadow-xl border border-white/10 mobile-menu"
+            className="fixed pt-16 -top-4 -left-[4px] h-screen w-64 bg-linear-to-br from-black/80 to-gray-900/90 text-white flex flex-col items-start p-8 rounded-lg backdrop-blur-lg shadow-xl border border-white/10 mobile-menu"
           >
             {sections.map((section, i) => (
               <motion.div
@@ -197,7 +197,7 @@ const Header = () => {
           onClick={handleBookCall}
         >
           Book a Call
-          <motion.div className="absolute bottom-0 h-1/3 w-full rounded-full bg-white opacity-30 blur-sm" />
+          <motion.div className="absolute bottom-0 h-1/3 w-full rounded-full bg-white opacity-30 blur-xs" />
         </motion.button>
       </nav>
     </header>

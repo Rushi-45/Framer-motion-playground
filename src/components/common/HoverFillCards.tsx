@@ -29,14 +29,14 @@ const HoverDevCards: React.FC<CardProps> = ({
   return (
     <a
       href={href}
-      className="w-full p-4 rounded border-[1px] border-slate-300 relative overflow-hidden group bg-opacity-55"
+      className="w-full p-4 rounded-sm border border-slate-300 relative overflow-hidden group bg-opacity-55"
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-r ${
+        className={`absolute inset-0 bg-linear-to-r ${
           colorMap[color]?.split(" ")[0]
         } ${
           colorMap[color]?.split(" ")[1]
-        } translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300`}
+        } translate-y-full group-hover:-translate-y-[0%] transition-transform duration-300`}
       />
 
       <Icon
