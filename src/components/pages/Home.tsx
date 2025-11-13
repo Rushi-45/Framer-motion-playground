@@ -53,14 +53,14 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
         >
-          <motion.h1 className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-xs">
+          <motion.p className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-xs">
             Hello, I'm Rushi 👋
-          </motion.h1>
+          </motion.p>
         </motion.div>
 
         {/* <LandingArea /> */}
 
-        <div className="mt-4">
+        <h1 className="mt-4">
           <TypewriterText
             text={[
               "Frontend Developer",
@@ -71,14 +71,19 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
             ]}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center"
           />
-        </div>
+        </h1>
 
         <motion.img
           src={spinner}
-          alt="Rotating Flower"
+          alt="Decorative rotating spinner animation"
           className="w-60 h-60 sm:w-[20rem] sm:h-80 md:w-120 md:h-120 lg:w-140 lg:h-140"
           style={{ rotate: smoothRotation }}
           transition={{ duration: 2, ease: "easeInOut" }}
+          width={560}
+          height={560}
+          loading="eager"
+          fetchPriority="high"
+          sizes="(max-width: 640px) 240px, (max-width: 768px) 320px, (max-width: 1024px) 480px, 560px"
         />
       </div>
 

@@ -70,7 +70,7 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
           <TiltHoverCard />
         </motion.div>
         <div>
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -78,7 +78,7 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
           >
             I am a <span className="text-[#808080]">Front-end Developer</span> &
             <span className="text-blue-500"> React Enthusiast</span>
-          </motion.h1>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

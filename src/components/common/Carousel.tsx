@@ -102,9 +102,9 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
   return (
     <>
       <div className="text-center">
-        <h1 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold uppercase mb-4">
+        <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold uppercase mb-4">
           Projects
-        </h1>
+        </h2>
       </div>
       <div className="flex flex-col gap-8 h-auto">
         <div className="relative w-full lg:w-2/3">
@@ -172,8 +172,12 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                         <div className="relative grid place-content-center overflow-hidden rounded-lg bg-[#2D3748]/90 w-full h-60 sm:h-72 lg:h-80">
                           <img
                             src={article.logo}
-                            alt={article.title}
+                            alt={`${article.title} project logo`}
                             className="h-40 sm:h-48 lg:h-60 w-auto object-cover"
+                            width={400}
+                            height={300}
+                            loading="lazy"
+                            sizes="(max-width: 640px) 200px, (max-width: 1024px) 300px, 400px"
                           />
 
                           <div className="absolute inset-0 opacity-0 cursor-grab pointer-events-auto"></div>
@@ -201,9 +205,9 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                 className="w-full h-full bg-gray-800 p-4 sm:p-6 lg:p-8 rounded-lg 
                  text-left lg:text-center"
               >
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
                   {projects[activeSlide].title}
-                </h2>
+                </h3>
 
                 <p className="mt-2 sm:mt-4 text-sm sm:text-lg leading-relaxed text-gray-300">
                   {projects[activeSlide].description}

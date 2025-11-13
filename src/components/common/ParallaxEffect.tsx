@@ -15,26 +15,33 @@ const ParallaxEffect = () => {
 
   return (
     <div ref={ref} className="w-full h-screen overflow-hidden relative">
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${imageFull})`,
-          backgroundPosition: "bottom",
-          backgroundSize: "cover",
-          y: backgroundY,
-        }}
-      />
-      <motion.div className="absolute inset-0 z-20 flex items-center justify-center">
-        <Home />
+      <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
+        <img
+          src={imageFull}
+          alt="Parallax background layer"
+          className="absolute inset-0 w-full h-full object-cover object-bottom"
+          loading="eager"
+          fetchPriority="high"
+          width={1920}
+          height={1080}
+        />
       </motion.div>
-      <div
-        className="absolute inset-0 z-10"
-        style={{
-          backgroundImage: `url(${imageBottom})`,
-          backgroundPosition: "bottom",
-          backgroundSize: "cover",
-        }}
-      />
+
+      <motion.div className="absolute inset-0 z-20 flex items-center justify-center">
+        <Home contactEnter={() => {}} contactLeave={() => {}} />
+      </motion.div>
+
+      <div className="absolute inset-0 z-10">
+        <img
+          src={imageBottom}
+          alt="Parallax foreground layer"
+          className="absolute inset-0 w-full h-full object-cover object-bottom"
+          loading="eager"
+          fetchPriority="high"
+          width={1920}
+          height={1080}
+        />
+      </div>
     </div>
   );
 };
