@@ -38,7 +38,7 @@ const App = () => {
       x: mouseXPosition,
       y: mouseYPosition,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         mass: 0.6,
       },
     },
@@ -65,7 +65,7 @@ const App = () => {
   };
 
   const spring = {
-    type: "spring",
+    type: "spring" as const,
     stiffness: 500,
     damping: 28,
   };
@@ -117,10 +117,10 @@ const App = () => {
           <section id="projects" className="min-h-screen">
             <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
           </section>
-          <section id="skills" className="min-h-screen">
+          <section id="skills" className="min-h-[60vh] py-8">
             <DraggableSkills />
           </section>
-          <section id="contact" className="min-h-screen">
+          <section id="contact" className="min-h-screen py-8">
             <Contact />
           </section>
           <Footer />

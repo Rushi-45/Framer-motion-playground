@@ -175,9 +175,12 @@ const DraggableSkills = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="flex flex-col items-center space-y-4 px-4">
+    <div
+      ref={sectionRef}
+      className="flex flex-col items-center space-y-4 px-4 py-8"
+    >
       <Toaster />
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
         Tech Stack
       </h2>
       <div

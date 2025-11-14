@@ -73,18 +73,20 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           />
         </h1>
 
-        <motion.img
-          src={spinner}
-          alt="Decorative rotating spinner animation"
-          className="w-60 h-60 sm:w-[20rem] sm:h-80 md:w-120 md:h-120 lg:w-140 lg:h-140"
-          style={{ rotate: smoothRotation }}
-          transition={{ duration: 2, ease: "easeInOut" }}
-          width={560}
-          height={560}
-          loading="eager"
-          fetchPriority="high"
-          sizes="(max-width: 640px) 240px, (max-width: 768px) 320px, (max-width: 1024px) 480px, 560px"
-        />
+        <div className="relative w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px] 3xl:w-[600px] 3xl:h-[600px]">
+          <motion.img
+            src={spinner}
+            alt="Decorative rotating spinner animation"
+            className="h-full w-full object-contain"
+            style={{ rotate: smoothRotation }}
+            transition={{ duration: 2, ease: "easeInOut" }}
+            width={600}
+            height={600}
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 575px) 240px, (max-width: 768px) 320px, (max-width: 992px) 480px, (max-width: 1600px) 560px, 600px"
+          />
+        </div>
       </div>
 
       <motion.div

@@ -70,6 +70,8 @@ export const TiltHoverCard = () => {
           alt="Rushi Chudasama - Frontend Developer"
           className="mx-auto text-4xl text-black rounded-full shadow"
           style={{ transform: "translateZ(75px)" }}
+          width={200}
+          height={200}
           loading="eager"
           fetchPriority="high"
         />
