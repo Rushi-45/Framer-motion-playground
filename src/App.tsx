@@ -112,27 +112,32 @@ const App = () => {
             </span>
           </motion.div>
           <Header />
-          <section id="home" className="text-center text-secondary">
-            <Home contactEnter={contactEnter} contactLeave={contactLeave} />
-          </section>
-          <Suspense fallback={<LoadingFallback />}>
-            <section id="about">
-              <About contactEnter={contactEnter} contactLeave={contactLeave} />
+          <main>
+            <section id="home" className="text-center text-secondary">
+              <Home contactEnter={contactEnter} contactLeave={contactLeave} />
             </section>
-            <section id="projects">
-              <Projects
-                projectEnter={projectEnter}
-                projectLeave={projectLeave}
-              />
-            </section>
-            <section id="skills" className="min-h-[60vh] py-8">
-              <DraggableSkills />
-            </section>
-            <section id="contact">
-              <Contact />
-            </section>
-            <Footer />
-          </Suspense>
+            <Suspense fallback={<LoadingFallback />}>
+              <section id="about">
+                <About
+                  contactEnter={contactEnter}
+                  contactLeave={contactLeave}
+                />
+              </section>
+              <section id="projects">
+                <Projects
+                  projectEnter={projectEnter}
+                  projectLeave={projectLeave}
+                />
+              </section>
+              <section id="skills" className="min-h-[60vh] py-8">
+                <DraggableSkills />
+              </section>
+              <section id="contact">
+                <Contact />
+              </section>
+            </Suspense>
+          </main>
+          <Footer />
         </div>
       </SpotlightCard>
     </Router>
