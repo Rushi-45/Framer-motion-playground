@@ -23,7 +23,7 @@ const DraggableSkills = () => {
   useEffect(() => {
     const ref = sectionRef.current;
     if (!ref) return;
-    let timeout: number;
+    let timeout: ReturnType<typeof setTimeout>;
     const observer = new window.IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {

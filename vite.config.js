@@ -37,6 +37,9 @@ export default defineConfig({
             if (id.includes("matter-js")) {
               return "vendor-matter";
             }
+            if (id.includes("react-icons")) {
+              return "vendor-icons";
+            }
             return "vendor";
           }
         },
@@ -45,6 +48,9 @@ export default defineConfig({
           const ext = info[info.length - 1];
           if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp/i.test(ext)) {
             return `assets/images/[name]-[hash][extname]`;
+          }
+          if (/css/i.test(ext)) {
+            return `assets/css/[name]-[hash][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
         },
@@ -58,10 +64,13 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true,
         pure_funcs: ["console.log", "console.info", "console.debug"],
+        passes: 2,
       },
     },
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
+    cssMinify: true,
+    reportCompressedSize: false,
   },
   optimizeDeps: {
     include: ["react", "react-dom", "framer-motion"],

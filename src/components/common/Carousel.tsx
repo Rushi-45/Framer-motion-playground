@@ -343,6 +343,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                             width={400}
                             height={300}
                             loading="lazy"
+                            decoding="async"
                             sizes="(max-width: 640px) 200px, (max-width: 1024px) 300px, 400px"
                           />
 

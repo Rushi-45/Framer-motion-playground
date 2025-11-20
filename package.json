@@ -43,12 +43,17 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
     "postcss": "^8.5.6",
     "postcss-import": "^16.1.1",
     "rollup-plugin-postcss": "^4.0.2",
     "tailwindcss": "^4.1.17",
     "terser": "^5.44.1",
     "vite": "^6.4.1",
+    "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-static-copy": "^2.3.0"
   }
 }

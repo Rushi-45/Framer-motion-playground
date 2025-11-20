@@ -15,7 +15,10 @@ const ParallaxEffect = () => {
 
   return (
     <div ref={ref} className="w-full h-screen overflow-hidden relative">
-      <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ y: backgroundY, willChange: "transform" }}
+      >
         <img
           src={imageFull}
           alt="Parallax background layer"
@@ -24,6 +27,7 @@ const ParallaxEffect = () => {
           fetchPriority="high"
           width={1920}
           height={1080}
+          decoding="async"
         />
       </motion.div>
 
@@ -36,10 +40,11 @@ const ParallaxEffect = () => {
           src={imageBottom}
           alt="Parallax foreground layer"
           className="absolute inset-0 w-full h-full object-cover object-bottom"
-          loading="eager"
-          fetchPriority="high"
+          loading="lazy"
+          fetchPriority="low"
           width={1920}
           height={1080}
+          decoding="async"
         />
       </div>
     </div>

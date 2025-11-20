@@ -76,7 +76,11 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
             src={spinner}
             alt="Decorative rotating spinner animation"
             className="h-full w-full object-contain"
-            style={{ rotate: smoothRotation }}
+            style={{
+              rotate: smoothRotation,
+              willChange: "transform",
+              contentVisibility: "auto",
+            }}
             transition={{ duration: 2, ease: "easeInOut" }}
             width={600}
             height={600}
