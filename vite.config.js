@@ -26,6 +26,20 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
+        manualChunks: (id) => {
+          if (id.includes("node_modules")) {
+            if (id.includes("framer-motion")) {
+              return "vendor-framer";
+            }
+            if (id.includes("react") || id.includes("react-dom")) {
+              return "vendor-react";
+            }
+            if (id.includes("matter-js")) {
+              return "vendor-matter";
+            }
+            return "vendor";
+          }
+        },
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split(".");
           const ext = info[info.length - 1];
@@ -34,6 +48,8 @@ export default defineConfig({
           }
           return `assets/[name]-[hash][extname]`;
         },
+        chunkFileNames: "assets/js/[name]-[hash].js",
+        entryFileNames: "assets/js/[name]-[hash].js",
       },
     },
     minify: "terser",
@@ -41,8 +57,11 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
+        pure_funcs: ["console.log", "console.info", "console.debug"],
       },
     },
+    chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
   },
   optimizeDeps: {
     include: ["react", "react-dom", "framer-motion"],

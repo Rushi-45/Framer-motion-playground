@@ -1,17 +1,20 @@
 import { BrowserRouter as Router } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import "./App.css";
 import Header from "./components/common/Header";
 import "./index.css";
 import Home from "./components/pages/Home";
-import About from "./components/pages/About";
-import Projects from "./components/pages/Projects";
-import Contact from "./components/pages/Contact";
 import { useRef, useState } from "react";
 import useMouse from "@react-hook/mouse-position";
 import { motion } from "framer-motion";
 import SpotlightCard from "./components/common/SpotlightCard";
-import Footer from "./components/pages/Footer";
-import DraggableSkills from "./components/common/SkillsBox";
+import LoadingFallback from "./components/common/LoadingFallback";
+
+const About = lazy(() => import("./components/pages/About"));
+const Projects = lazy(() => import("./components/pages/Projects"));
+const Contact = lazy(() => import("./components/pages/Contact"));
+const Footer = lazy(() => import("./components/pages/Footer"));
+const DraggableSkills = lazy(() => import("./components/common/SkillsBox"));
 
 const App = () => {
   const [cursorText, setCursorText] = useState("");
@@ -111,19 +114,24 @@ const App = () => {
           <section id="home" className="text-center text-secondary">
             <Home contactEnter={contactEnter} contactLeave={contactLeave} />
           </section>
-          <section id="about">
-            <About contactEnter={contactEnter} contactLeave={contactLeave} />
-          </section>
-          <section id="projects">
-            <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
-          </section>
-          <section id="skills" className="min-h-[60vh] py-8">
-            <DraggableSkills />
-          </section>
-          <section id="contact">
-            <Contact />
-          </section>
-          <Footer />
+          <Suspense fallback={<LoadingFallback />}>
+            <section id="about">
+              <About contactEnter={contactEnter} contactLeave={contactLeave} />
+            </section>
+            <section id="projects">
+              <Projects
+                projectEnter={projectEnter}
+                projectLeave={projectLeave}
+              />
+            </section>
+            <section id="skills" className="min-h-[60vh] py-8">
+              <DraggableSkills />
+            </section>
+            <section id="contact">
+              <Contact />
+            </section>
+            <Footer />
+          </Suspense>
         </div>
       </SpotlightCard>
     </Router>
