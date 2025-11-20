@@ -42,19 +42,36 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex gap-4"
         >
-          <a href="mailto:rushi.positive@gmail.com" target="_blank">
+          <a
+            href="mailto:rushi.positive@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Send email to Rushi Chudasama"
+          >
             <FiMail className="text-xl text-gray-400 hover:text-red-400 transition duration-300" />
           </a>
           <a
             href="https://www.linkedin.com/in/rushi-chudasama-63473819a/"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Rushi Chudasama's LinkedIn profile"
           >
             <FiLinkedin className="text-xl text-gray-400 hover:text-blue-400 transition duration-300" />
           </a>
-          <a href="https://www.instagram.com/rushiii.js" target="_blank">
+          <a
+            href="https://www.instagram.com/rushiii.js"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Rushi Chudasama's Instagram profile"
+          >
             <FiInstagram className="text-xl text-gray-400 hover:text-pink-400 transition duration-300" />
           </a>
-          <a href="https://github.com/Rushi-45" target="_blank">
+          <a
+            href="https://github.com/Rushi-45"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Rushi Chudasama's GitHub profile"
+          >
             <FiGithub className="text-xl text-gray-400 hover:text-gray-300 transition duration-300" />
           </a>
         </motion.div>
