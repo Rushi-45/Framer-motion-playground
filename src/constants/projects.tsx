@@ -1,13 +1,13 @@
-import visileanLogo from "../assets/images/visilean.png";
-import celebalLogo from "../assets/images/celebal-tech.jpg";
-import nflLogo from "../assets/images/nfl.png";
-import solarPanelLogo from "../assets/images/solar-panel.png";
-import urbanNapsLogo from "../assets/images/urban-naps.png";
-import shopEaseLogo from "../assets/images/shop-ease.png";
-import mediTrackLogo from "../assets/images/medi-track.png";
-import learnifyLogo from "../assets/images/learnify.png";
-import smartHomeLogo from "../assets/images/smart-home.png";
-import loveAiLogo from "../assets/images/love-ai.png";
+import visileanLogo from "../assets/images/visilean.webp";
+import celebalLogo from "../assets/images/celebal-tech.webp";
+import nflLogo from "../assets/images/nfl.webp";
+import solarPanelLogo from "../assets/images/solar-panel.webp";
+import urbanNapsLogo from "../assets/images/urban-naps.webp";
+import shopEaseLogo from "../assets/images/shop-ease.webp";
+import mediTrackLogo from "../assets/images/medi-track.webp";
+import learnifyLogo from "../assets/images/learnify.webp";
+import smartHomeLogo from "../assets/images/smart-home.webp";
+import loveAiLogo from "../assets/images/love-ai.webp";
 import {
   FaMusic,
   FaBicycle,

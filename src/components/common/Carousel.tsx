@@ -6,7 +6,6 @@ import {
 } from "react";
 import { motion, useMotionValue, useSpring, type PanInfo } from "framer-motion";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { projects } from "../../constants/projects";
 import ShinyButton from "./ShinyButton";
@@ -308,7 +307,6 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                   const active = index === activeSlide;
                   return (
                     <motion.li
-                      layout
                       key={article.title}
                       ref={(el) => {
                         itemsRef.current[index] = el;
@@ -318,19 +316,15 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                         "basis-full sm:basis-1/2 lg:basis-1/3 max-w-full",
                         !active && "opacity-30"
                       )}
+                      style={{ willChange: "transform" }}
                       transition={{
                         ease: "easeInOut",
                         duration: 0.5,
                       }}
                       whileHover={{
                         scale: 1.05,
-                        y: [-6, 6, -6],
                         transition: {
-                          y: {
-                            duration: 4,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                          },
+                          duration: 0.3,
                         },
                       }}
                     >

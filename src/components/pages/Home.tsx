@@ -7,7 +7,6 @@ import {
   useTransform,
 } from "framer-motion";
 import "../../assets/styles/gradient.css";
-import LandingArea from "./LandingArea";
 import spinner from "../../assets/images/spinner.webp";
 import TypewriterText from "../common/TypewriterText";
 

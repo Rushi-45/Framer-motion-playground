@@ -4,7 +4,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import myImage from "../../assets/images/profile.jpg";
+import myImage from "../../assets/images/profile.webp";
 import { useRef } from "react";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
