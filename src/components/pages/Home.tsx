@@ -37,7 +37,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
 
   return (
     <motion.div
-      className="text-center text-secondary pt-12 min-h-screen flex flex-col justify-center items-center px-4 md:px-8"
+      className="text-center text-secondary pt-4 sm:pt-8 md:pt-12 min-h-screen flex flex-col justify-center items-center px-4 md:px-8 -my-32 lg:my-0"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -53,12 +53,10 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
         >
-          <motion.p className="inline-block px-4 py-1 mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-xs">
+          <motion.p className="inline-block px-4 py-1 mt-4 sm:mt-8 md:mt-12 text-sm text-white bg-[#1e1e1e]/80 border border-[#333] rounded-full backdrop-blur-xs">
             Hello, I'm Rushi 👋
           </motion.p>
         </motion.div>
-
-        {/* <LandingArea /> */}
 
         <h1 className="mt-4">
           <TypewriterText
@@ -73,7 +71,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
           />
         </h1>
 
-        <div className="relative w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px] 3xl:w-[600px] 3xl:h-[600px]">
+        <div className="relative w-[320px] h-[320px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px] 3xl:w-[600px] 3xl:h-[600px]">
           <motion.img
             src={spinner}
             alt="Decorative rotating spinner animation"

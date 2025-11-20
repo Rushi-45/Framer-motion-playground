@@ -16,7 +16,6 @@ export const HobbiesSection = () => {
       transition={{ delay: 0.8, duration: 0.5 }}
       className="hobbies-section px-4 sm:px-8 md:px-12 lg:px-16"
     >
-      {/* <h2 className="text-2xl font-bold text-center mb-6">What I Love Doing</h2> */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-8">
         {hobbies.map((hobby, idx) => (
           <div

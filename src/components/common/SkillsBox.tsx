@@ -9,7 +9,7 @@ import Matter, {
 } from "matter-js";
 import toast, { Toaster } from "react-hot-toast";
 
-const SKILL_SIZE = 64; // px, adjust as needed
+const SKILL_SIZE = 64;
 
 const DraggableSkills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,23 +42,18 @@ const DraggableSkills = () => {
     };
   }, []);
 
-  // Set up Matter.js world and bodies
   useEffect(() => {
     if (!containerRef.current) return;
     const width = containerRef.current.offsetWidth || 800;
     const height = containerRef.current.offsetHeight || 400;
 
-    // Remove previous bodies
     World.clear(engine.world, false);
 
-    // Create boundaries
     const wallThickness = 100;
     const walls = [
-      // top
       Bodies.rectangle(width / 2, -wallThickness / 2, width, wallThickness, {
         isStatic: true,
       }),
-      // bottom
       Bodies.rectangle(
         width / 2,
         height + wallThickness / 2,
@@ -66,11 +61,9 @@ const DraggableSkills = () => {
         wallThickness,
         { isStatic: true }
       ),
-      // left
       Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height, {
         isStatic: true,
       }),
-      // right
       Bodies.rectangle(
         width + wallThickness / 2,
         height / 2,
@@ -81,9 +74,7 @@ const DraggableSkills = () => {
     ];
     World.add(engine.world, walls);
 
-    // Create skill bodies
     const initialBodies = skills.map((skill, i) => {
-      // Random position within bounds
       const x = Math.random() * (width - SKILL_SIZE) + SKILL_SIZE / 2;
       const y = Math.random() * (height - SKILL_SIZE) + SKILL_SIZE / 2;
       return Bodies.circle(x, y, SKILL_SIZE / 2, {
@@ -99,7 +90,6 @@ const DraggableSkills = () => {
     );
     setIsReady(true);
 
-    // Mouse drag
     const mouse = Mouse.create(containerRef.current);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
@@ -110,7 +100,6 @@ const DraggableSkills = () => {
     });
     World.add(engine.world, mouseConstraint);
 
-    // Animation loop
     let frameId: number;
     const update = () => {
       if (physicsActive) {
@@ -123,7 +112,6 @@ const DraggableSkills = () => {
     };
     update();
 
-    // Clean up
     return () => {
       cancelAnimationFrame(frameId);
       World.clear(engine.world, false);
@@ -132,7 +120,6 @@ const DraggableSkills = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerRef.current, physicsActive]);
 
-  // Toast on mount
   useEffect(() => {
     if (isReady) {
       const timeout = setTimeout(() => {
@@ -155,7 +142,6 @@ const DraggableSkills = () => {
     }
   }, [isReady]);
 
-  // Responsive container size
   const [containerSize, setContainerSize] = useState({
     width: 800,
     height: 400,
@@ -216,7 +202,6 @@ const DraggableSkills = () => {
                   size: window.innerWidth < 400 ? 30 : 40,
                   className: `sm:text-2xl ${skill.textColor}`,
                 })}
-              {/* Tooltip */}
               <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-black text-white text-xs opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition pointer-events-none z-10 whitespace-nowrap">
                 {skill.name}
               </span>

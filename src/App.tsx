@@ -111,16 +111,16 @@ const App = () => {
           <section id="home" className="text-center text-secondary">
             <Home contactEnter={contactEnter} contactLeave={contactLeave} />
           </section>
-          <section id="about" className="min-h-screen ">
+          <section id="about">
             <About contactEnter={contactEnter} contactLeave={contactLeave} />
           </section>
-          <section id="projects" className="min-h-screen">
+          <section id="projects">
             <Projects projectEnter={projectEnter} projectLeave={projectLeave} />
           </section>
           <section id="skills" className="min-h-[60vh] py-8">
             <DraggableSkills />
           </section>
-          <section id="contact" className="min-h-screen py-8">
+          <section id="contact">
             <Contact />
           </section>
           <Footer />

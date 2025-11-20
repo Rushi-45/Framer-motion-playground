@@ -101,11 +101,11 @@ const About: React.FC<AboutProps> = ({ contactEnter, contactLeave }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4"
+            className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 px-4"
           >
             {stats.map((item, index) => (
-              <div key={index} className="text-center sm:text-left">
-                <div className="flex justify-center sm:justify-start items-center">
+              <div key={index} className="text-center md:text-left">
+                <div className="flex justify-center md:justify-start items-center">
                   <motion.p className="text-3xl font-bold text-white">
                     {item.value}
                   </motion.p>

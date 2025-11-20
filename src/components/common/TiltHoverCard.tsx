@@ -68,10 +68,10 @@ export const TiltHoverCard = () => {
         <motion.img
           src={myImage}
           alt="Rushi Chudasama - Frontend Developer"
-          className="mx-auto text-4xl text-black rounded-full shadow"
+          className="mx-auto text-4xl text-black rounded-2xl shadow w-[280px] h-[280px] md:w-[380px] md:h-[380px] object-cover"
           style={{ transform: "translateZ(75px)" }}
-          width={200}
-          height={200}
+          width={250}
+          height={250}
           loading="eager"
           fetchPriority="high"
         />

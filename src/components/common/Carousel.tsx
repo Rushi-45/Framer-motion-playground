@@ -1,7 +1,13 @@
-import { MouseEvent as ReactMouseEvent, useRef, useState } from "react";
+import {
+  MouseEvent as ReactMouseEvent,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import { motion, useMotionValue, useSpring, type PanInfo } from "framer-motion";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { projects } from "../../constants/projects";
 import ShinyButton from "./ShinyButton";
 import SpotlightCard from "./SpotlightCard";
@@ -30,6 +36,37 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
   });
 
   const [isDragging, setIsDragging] = useState(false);
+
+  const updateActiveSlide = () => {
+    if (!containerRef.current) return;
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const isMobile = window.innerWidth < 768;
+    const offsetAdjustment = isMobile ? -30 : 0;
+    const containerCenter =
+      containerRect.left + containerRect.width / 2 + offsetAdjustment;
+    const currentOffset = offsetX.get();
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    itemsRef.current.forEach((item, index) => {
+      if (!item) return;
+      const itemRect = item.getBoundingClientRect();
+      const itemCenter = itemRect.left + itemRect.width / 2;
+      const distance = Math.abs(itemCenter - containerCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== activeSlide) {
+      setActiveSlide(closestIndex);
+    }
+  };
+
   function handleDragSnap(
     _: MouseEvent,
     { offset: { x: dragOffset } }: PanInfo
@@ -40,6 +77,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
     animatedX.stop();
 
     const currentOffset = offsetX.get();
+    const finalOffset = currentOffset + dragOffset;
 
     if (
       Math.abs(dragOffset) < DRAG_THRESHOLD ||
@@ -47,10 +85,12 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
       (!canScrollNext && dragOffset < 0)
     ) {
       animatedX.set(currentOffset);
+      calculateActiveSlideFromOffset(currentOffset);
       return;
     }
 
     let offsetWidth = 0;
+    let newActiveSlide = activeSlide;
 
     for (
       let i = activeSlide;
@@ -79,18 +119,82 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
       }
 
       if (dragOffset > 0) {
-        offsetX.set(currentOffset + offsetWidth + prevItemWidth);
-        setActiveSlide(i - 1);
+        const newOffset = currentOffset + offsetWidth + prevItemWidth;
+        offsetX.set(newOffset);
+        newActiveSlide = i - 1;
       } else {
-        offsetX.set(currentOffset + offsetWidth - nextItemWidth);
-        setActiveSlide(i + 1);
+        const newOffset = currentOffset + offsetWidth - nextItemWidth;
+        offsetX.set(newOffset);
+        newActiveSlide = i + 1;
       }
       break;
     }
+
+    setActiveSlide(newActiveSlide);
   }
+
+  const calculateActiveSlideFromOffset = (offset: number) => {
+    if (!containerRef.current || itemsRef.current.length === 0) return;
+
+    const containerWidth = containerRef.current.offsetWidth;
+    const isMobile = window.innerWidth < 768;
+    const offsetAdjustment = isMobile ? -30 : 0;
+    let accumulatedWidth = 0;
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    itemsRef.current.forEach((item, index) => {
+      if (!item) return;
+      const itemWidth = item.offsetWidth;
+      const itemCenter = accumulatedWidth + itemWidth / 2 + offset;
+      const containerCenter = containerWidth / 2 + offsetAdjustment;
+      const distance = Math.abs(itemCenter - containerCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+
+      accumulatedWidth += itemWidth;
+    });
+
+    if (closestIndex !== activeSlide) {
+      setActiveSlide(closestIndex);
+    }
+  };
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (itemsRef.current[START_INDEX] && containerRef.current) {
+        const startItem = itemsRef.current[START_INDEX];
+        const containerWidth = containerRef.current.offsetWidth;
+        const itemWidth = startItem.offsetWidth;
+        const isMobile = window.innerWidth < 768;
+        const offsetAdjustment = isMobile ? -30 : 0;
+        const initialOffset =
+          -(itemWidth * START_INDEX) +
+          (containerWidth - itemWidth) / 2 +
+          offsetAdjustment;
+        offsetX.set(initialOffset);
+        setActiveSlide(START_INDEX);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = animatedX.on("change", (latest) => {
+      if (!isDragging) {
+        setTimeout(() => {
+          calculateActiveSlideFromOffset(latest);
+        }, 200);
+      }
+    });
+    return unsubscribe;
+  }, [isDragging]);
 
   function disableDragClick(e: ReactMouseEvent<HTMLAnchorElement>) {
     if (isDragging) {
@@ -98,6 +202,36 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
       e.stopPropagation();
     }
   }
+
+  const goToSlide = (index: number) => {
+    if (index < 0 || index >= projects.length) return;
+    if (!containerRef.current || !itemsRef.current[index]) return;
+
+    const item = itemsRef.current[index];
+    const containerWidth = containerRef.current.offsetWidth;
+    const itemWidth = item.offsetWidth;
+    const isMobile = window.innerWidth < 768;
+    const offsetAdjustment = isMobile ? -30 : 0;
+    const newOffset =
+      -(itemWidth * index) +
+      (containerWidth - itemWidth) / 2 +
+      offsetAdjustment;
+
+    offsetX.set(newOffset);
+    setActiveSlide(index);
+  };
+
+  const goToPrev = () => {
+    if (canScrollPrev) {
+      goToSlide(activeSlide - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (canScrollNext) {
+      goToSlide(activeSlide + 1);
+    }
+  };
 
   return (
     <>
@@ -108,6 +242,38 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
       </div>
       <div className="flex flex-col gap-8 h-auto">
         <div className="relative w-full lg:w-2/3">
+          <button
+            onClick={goToPrev}
+            disabled={!canScrollPrev}
+            className={classNames(
+              "absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10",
+              "bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3",
+              "transition-all duration-300 flex items-center justify-center",
+              "disabled:opacity-30 disabled:cursor-not-allowed",
+              "text-white hover:text-blue-400",
+              "lg:hidden"
+            )}
+            aria-label="Previous slide"
+          >
+            <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          <button
+            onClick={goToNext}
+            disabled={!canScrollNext}
+            className={classNames(
+              "absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10",
+              "bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3",
+              "transition-all duration-300 flex items-center justify-center",
+              "disabled:opacity-30 disabled:cursor-not-allowed",
+              "text-white hover:text-blue-400",
+              "lg:hidden"
+            )}
+            aria-label="Next slide"
+          >
+            <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
           <div className="group container mx-4 sm:mx-6">
             <div
               className="relative overflow-hidden"
@@ -188,6 +354,22 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                 })}
               </motion.ul>
             </div>
+          </div>
+
+          <div className="flex justify-center gap-2 mt-4 sm:mt-6 lg:hidden">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={classNames(
+                  "transition-all duration-300 rounded-full",
+                  index === activeSlide
+                    ? "w-8 h-2 sm:w-10 sm:h-2.5 bg-blue-500"
+                    : "w-2 h-2 sm:w-2.5 sm:h-2.5 bg-white/30 hover:bg-white/50"
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
         <div className="w-full ">

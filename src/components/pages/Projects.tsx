@@ -19,8 +19,6 @@ const Projects: React.FC<ProjectsProps> = ({ projectEnter, projectLeave }) => {
       transition={{ duration: 0.5 }}
       className="text-white py-12 px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto"
     >
-      {/* <MainCard projectEnter={projectEnter} projectLeave={projectLeave} /> */}
-
       <Carousel projectEnter={projectEnter} projectLeave={projectLeave} />
     </motion.div>
   );
