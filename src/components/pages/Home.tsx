@@ -7,7 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import "../../assets/styles/gradient.css";
-import spinner from "../../assets/images/spinner.webp";
+const spinner = "/spinner.webp";
 import TypewriterText from "../common/TypewriterText";
 
 interface HomeProps {
@@ -37,18 +37,20 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
   return (
     <motion.div
       className="text-center text-secondary pt-4 sm:pt-8 md:pt-12 min-h-screen flex flex-col justify-center items-center px-4 md:px-8 -my-32 lg:my-0"
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
+      style={{ willChange: "opacity" }}
       ref={containerRef}
     >
       <div className="flex flex-col justify-center items-center">
         <motion.div
           className="transform"
-          initial={{ y: "-1rem" }}
-          animate={{ y: 0 }}
+          initial={{ opacity: 0, y: "-1rem" }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          style={{ willChange: "transform, opacity" }}
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
         >
@@ -116,10 +118,11 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
             style={{
               backgroundColor: hovered ? "transparent" : "#3B82F6",
               color: hovered ? "white" : "white",
+              willChange: "transform, opacity",
             }}
-            initial={{ opacity: 0, y: 100, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            exit={{ opacity: 0, y: -100 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            exit={{ opacity: 0 }}
             transition={{
               duration: 3,
               ease: [0.16, 1, 0.3, 1],
@@ -132,6 +135,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
                 y: hovered ? -100 : 0,
                 transition: { duration: 0.6 },
               }}
+              style={{ willChange: "transform" }}
             >
               Download Resume
             </motion.div>
@@ -142,6 +146,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
                 y: hovered ? 0 : 100,
                 transition: { duration: 0.6 },
               }}
+              style={{ willChange: "transform" }}
             >
               Download Resume
             </motion.div>
