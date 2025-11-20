@@ -87,7 +87,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
             height={600}
             loading="eager"
             fetchPriority="high"
-            sizes="(max-width: 575px) 240px, (max-width: 768px) 320px, (max-width: 992px) 480px, (max-width: 1600px) 560px, 600px"
+            sizes="(max-width: 575px) 320px, (max-width: 768px) 480px, (max-width: 992px) 560px, 600px"
           />
         </div>
       </div>

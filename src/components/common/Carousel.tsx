@@ -334,11 +334,11 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                             src={article.logo}
                             alt={`${article.title} project logo`}
                             className="h-40 sm:h-48 lg:h-60 w-auto object-cover"
-                            width={400}
-                            height={300}
+                            width={300}
+                            height={225}
                             loading="lazy"
                             decoding="async"
-                            sizes="(max-width: 640px) 200px, (max-width: 1024px) 300px, 400px"
+                            sizes="(max-width: 640px) 160px, (max-width: 1024px) 240px, 300px"
                           />
 
                           <div className="absolute inset-0 opacity-0 cursor-grab pointer-events-auto"></div>
