@@ -4,7 +4,7 @@ A modern, performant portfolio website built with React, TypeScript, Framer Moti
 
 ## 🌐 Live Site
 
-**[Visit Live Portfolio →](https://rushis-portfolio.netlify.app/)**
+**[Visit Live Portfolio →](https://rushichudasama.netlify.app/)**
 
 ## 🚀 Features
 
@@ -58,7 +58,7 @@ npm run preview
 
 ## 🔗 Links
 
-- **Live Site**: [https://rushis-portfolio.netlify.app/](https://rushis-portfolio.netlify.app/)
+- **Live Site**: [https://rushichudasama.netlify.app/](https://rushichudasama.netlify.app/)
 - **LinkedIn**: [Rushi Chudasama](https://www.linkedin.com/in/rushi-chudasama-63473819a/)
 - **GitHub**: [@Rushi-45](https://github.com/Rushi-45)
 - **Instagram**: [@rushiii.js](https://www.instagram.com/rushiii.js)
