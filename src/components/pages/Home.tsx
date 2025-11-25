@@ -41,20 +41,15 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
   return (
     <motion.div
       className="text-center text-secondary pt-4 sm:pt-8 md:pt-12 min-h-screen flex flex-col justify-center items-center px-4 md:px-8 -my-32 lg:my-0"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      style={{ willChange: "opacity" }}
       ref={containerRef}
     >
       <div className="flex flex-col justify-center items-center">
         <motion.div
           className="transform"
-          initial={{ opacity: 0, y: "-1rem" }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: "-1rem" }}
+          animate={{ y: 0 }}
           transition={{ duration: 1 }}
-          style={{ willChange: "transform, opacity" }}
+          style={{ willChange: "transform" }}
           onMouseEnter={contactEnter}
           onMouseLeave={contactLeave}
         >

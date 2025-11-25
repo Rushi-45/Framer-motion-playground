@@ -44,4 +44,5 @@
   background-position: center;
   background-repeat: no-repeat;
   min-height: 5000px;
+  content-visibility: auto;
 }
