@@ -4,7 +4,7 @@ export const sidebarVariants = {
   open: {
     clipPath: `circle(150% at 40px 40px)`,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 20,
       restDelta: 2,
     },
@@ -13,7 +13,7 @@ export const sidebarVariants = {
     clipPath: "circle(30px at 40px 40px)",
     transition: {
       delay: 0.2,
-      type: "spring",
+      type: "spring" as const,
       stiffness: 400,
       damping: 40,
     },
@@ -22,7 +22,7 @@ export const sidebarVariants = {
     clipPath: "circle(0px at 40px 40px)",
     transition: {
       duration: 0.5,
-      ease: "easeInOut",
+      ease: "easeInOut" as const,
     },
   },
 };

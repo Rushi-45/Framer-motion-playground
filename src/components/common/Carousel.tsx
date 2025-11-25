@@ -7,7 +7,7 @@ import {
 import { motion, useMotionValue, useSpring, type PanInfo } from "framer-motion";
 import classNames from "classnames";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { projects } from "../../constants/projects";
+import { projects } from "@/constants/projects";
 import ShinyButton from "./ShinyButton";
 import SpotlightCard from "./SpotlightCard";
 
@@ -331,7 +331,7 @@ const Carousel: React.FC<CarouselProps> = ({ projectEnter, projectLeave }) => {
                       <div className="block" tabIndex={0} draggable={false}>
                         <div className="relative grid place-content-center overflow-hidden rounded-lg bg-[#2D3748]/90 w-full h-60 sm:h-72 lg:h-80">
                           <img
-                            src={article.logo}
+                            src={article.logo.src}
                             alt={`${article.title} project logo`}
                             className="h-40 sm:h-48 lg:h-60 w-auto object-cover"
                             width={300}

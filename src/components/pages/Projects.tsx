@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Carousel from "../common/Carousel";
+import Carousel from "@/components/common/Carousel";
 
 interface ProjectsProps {
   projectEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

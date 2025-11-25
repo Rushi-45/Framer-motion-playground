@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useRef } from "react";
-import { hobbies } from "../../constants/projects";
+import { hobbies } from "@/constants/projects";
 
 export const HobbiesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

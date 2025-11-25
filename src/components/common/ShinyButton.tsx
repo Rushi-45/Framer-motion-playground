@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import "../../assets/styles/ShinyButton.css";
+import "@/assets/styles/ShinyButton.css";
 import { useEffect, useState } from "react";
 
 interface ShinyButtonProps {

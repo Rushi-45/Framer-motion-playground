@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { skills } from "../../constants/skills";
+import { skills } from "@/constants/skills";
 import Matter, {
   Engine,
   World,
@@ -185,7 +185,7 @@ const DraggableSkills = () => {
           positions.length === skills.length &&
           skills.map((skill, i) => (
             <div
-            key={skill.id}
+              key={skill.id}
               className={`absolute w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center ${skill.bgColor} rounded-full shadow-lg cursor-grab active:cursor-grabbing select-none group`}
               style={{
                 left: `${positions[i].x - SKILL_SIZE / 2}px`,
@@ -196,17 +196,17 @@ const DraggableSkills = () => {
               tabIndex={0}
               aria-label={skill.name}
               title={skill.name}
-          >
-            {skill.icon &&
-              React.cloneElement(skill.icon, {
-                size: window.innerWidth < 400 ? 30 : 40,
-                className: `sm:text-2xl ${skill.textColor}`,
-              })}
+            >
+              {skill.icon &&
+                React.cloneElement(skill.icon, {
+                  size: window.innerWidth < 400 ? 30 : 40,
+                  className: `sm:text-2xl ${skill.textColor}`,
+                })}
               <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-black text-white text-xs opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition pointer-events-none z-10 whitespace-nowrap">
                 {skill.name}
               </span>
             </div>
-        ))}
+          ))}
       </div>
     </div>
   );

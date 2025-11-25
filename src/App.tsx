@@ -113,28 +113,28 @@ const App = () => {
           </motion.div>
           <Header />
           <main>
-            <section id="home" className="text-center text-secondary">
-              <Home contactEnter={contactEnter} contactLeave={contactLeave} />
-            </section>
+          <section id="home" className="text-center text-secondary">
+            <Home contactEnter={contactEnter} contactLeave={contactLeave} />
+          </section>
             <Suspense fallback={<LoadingFallback />}>
               <section id="about">
                 <About
                   contactEnter={contactEnter}
                   contactLeave={contactLeave}
                 />
-              </section>
+          </section>
               <section id="projects">
                 <Projects
                   projectEnter={projectEnter}
                   projectLeave={projectLeave}
                 />
-              </section>
+          </section>
               <section id="skills" className="min-h-[60vh] py-8">
-                <DraggableSkills />
-              </section>
+            <DraggableSkills />
+          </section>
               <section id="contact">
-                <Contact />
-              </section>
+            <Contact />
+          </section>
             </Suspense>
           </main>
           <Footer />

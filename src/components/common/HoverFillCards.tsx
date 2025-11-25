@@ -42,11 +42,11 @@ const HoverDevCards: React.FC<CardProps> = ({
           colorMap[color]?.split(" ")[0]
         } ${
           colorMap[color]?.split(" ")[1]
-        } translate-y-full group-hover:-translate-y-[0%] transition-transform duration-300`}
+        } translate-y-full group-hover:translate-y-[0%] transition-transform duration-300`}
       />
 
       <Icon
-        className={`absolute z-10 -top-12 -right-12 text-9xl text-opacity-55 group-hover:${
+        className={`absolute z-10 -top-12 -right-12 text-9xl text-opacity-55 group-hover:translate-y-[0%] ${
           colorMap[color]?.split(" ")[2]
         } group-hover:rotate-12 transition-transform duration-300 group-hover:text-white`}
       />

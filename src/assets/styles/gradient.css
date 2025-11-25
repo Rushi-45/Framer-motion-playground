@@ -143,8 +143,10 @@
   font-size: 4.5rem;
 }
 
-.md\\:text-9xl {
-  font-size: 6rem;
+@media (min-width: 768px) {
+  [class*="md:text-9xl"] {
+    font-size: 6rem;
+  }
 }
 
 .relative {

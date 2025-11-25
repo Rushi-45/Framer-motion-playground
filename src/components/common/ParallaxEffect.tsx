@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import imageFull from "../../assets/images/image-full.png";
-import imageBottom from "../../assets/images/image-bottom.png";
-import Home from "../pages/Home";
+import imageFull from "@/assets/images/image-full.png";
+import imageBottom from "@/assets/images/image-bottom.png";
+import Home from "@/components/pages/Home";
 
 const ParallaxEffect = () => {
   const ref = useRef(null);
@@ -45,7 +45,7 @@ const ParallaxEffect = () => {
           style={{ y: backgroundY, willChange: "transform" }}
         >
           <img
-            src={imageFull}
+            src={typeof imageFull === "string" ? imageFull : imageFull.src}
             alt="Parallax background layer"
             className="absolute inset-0 w-full h-full object-cover object-bottom"
             loading={isMobile ? "lazy" : "eager"}
@@ -64,7 +64,9 @@ const ParallaxEffect = () => {
       {imagesLoaded && (
         <div className="absolute inset-0 z-10">
           <img
-            src={imageBottom}
+            src={
+              typeof imageBottom === "string" ? imageBottom : imageBottom.src
+            }
             alt="Parallax foreground layer"
             className="absolute inset-0 w-full h-full object-cover object-bottom"
             loading="lazy"

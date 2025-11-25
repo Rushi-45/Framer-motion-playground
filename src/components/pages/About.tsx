@@ -6,8 +6,8 @@ import {
   useTransform,
 } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { HobbiesSection } from "./Hobbies";
-import { TiltHoverCard } from "../common/TiltHoverCard";
+import { HobbiesSection } from "@/components/pages/Hobbies";
+import { TiltHoverCard } from "@/components/common/TiltHoverCard";
 
 interface AboutProps {
   contactEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

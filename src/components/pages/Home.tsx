@@ -6,13 +6,13 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import "../../assets/styles/gradient.css";
+import "@/assets/styles/gradient.css";
 const spinner = {
   src: "/spinner-600w.webp",
   srcSet:
     "/spinner-320w.webp 320w, /spinner-480w.webp 480w, /spinner-560w.webp 560w, /spinner-600w.webp 600w",
 };
-import TypewriterText from "../common/TypewriterText";
+import TypewriterText from "@/components/common/TypewriterText";
 
 interface HomeProps {
   contactEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

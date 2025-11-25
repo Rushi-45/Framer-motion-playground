@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { FiMail, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
 import toast from "react-hot-toast";
 import { useRef, useState } from "react";
-import HoverDevCards from "../common/HoverFillCards";
+import HoverDevCards from "@/components/common/HoverFillCards";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
