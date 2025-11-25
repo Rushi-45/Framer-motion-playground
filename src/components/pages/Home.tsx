@@ -6,13 +6,11 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Image from "next/image";
 import "@/assets/styles/gradient.css";
-const spinner = {
-  src: "/spinner-600w.webp",
-  srcSet:
-    "/spinner-320w.webp 320w, /spinner-480w.webp 480w, /spinner-560w.webp 560w, /spinner-600w.webp 600w",
-};
 import TypewriterText from "@/components/common/TypewriterText";
+
+const MotionImage = motion(Image);
 
 interface HomeProps {
   contactEnter: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -72,9 +70,8 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
         </h1>
 
         <div className="relative w-[320px] h-[320px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px] 3xl:w-[600px] 3xl:h-[600px]">
-          <motion.img
-            src={spinner.src}
-            srcSet={spinner.srcSet}
+          <MotionImage
+            src="/spinner.webp"
             alt="Decorative rotating spinner animation"
             className="h-full w-full object-contain"
             style={{
@@ -84,9 +81,7 @@ const Home: React.FC<HomeProps> = ({ contactEnter, contactLeave }) => {
             transition={{ duration: 2, ease: "easeInOut" }}
             width={600}
             height={600}
-            loading="eager"
-            fetchPriority="high"
-            decoding="sync"
+            priority
             sizes="(max-width: 575px) 320px, (max-width: 768px) 480px, (max-width: 992px) 560px, 600px"
           />
         </div>

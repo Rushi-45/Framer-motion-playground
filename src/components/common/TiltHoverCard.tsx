@@ -4,8 +4,11 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import Image from "next/image";
 import myImage from "@/assets/images/profile.webp";
 import { useRef } from "react";
+
+const MotionImage = motion(Image);
 
 export const TiltHoverCard = () => {
   const ROTATION_RANGE = 32.5;
@@ -64,15 +67,14 @@ export const TiltHoverCard = () => {
         }}
         className="absolute inset-4 grid place-content-center rounded-xl bg-white shadow-lg group-hover:shadow-2xl group-hover:shadow-blue-300 transition-shadow duration-300"
       >
-        <motion.img
-          src={myImage.src}
+        <MotionImage
+          src={myImage}
           alt="Rushi Chudasama - Frontend Developer"
           className="mx-auto text-4xl text-black rounded-2xl shadow w-[280px] h-[280px] md:w-[380px] md:h-[380px] object-cover"
           style={{ transform: "translateZ(75px)" }}
           width={380}
           height={380}
-          loading="eager"
-          fetchPriority="high"
+          priority
           sizes="(max-width: 768px) 280px, 380px"
         />
       </div>
