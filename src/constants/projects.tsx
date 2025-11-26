@@ -103,7 +103,7 @@ export const projects = [
   {
     title: "MediTrack - Healthcare Portal",
     logo: mediTrackLogo,
-    technologies: ["React.js", "TypeScript", "Next.js", "Chakra UI", "GraphQL"],
+    technologies: ["React.js", "TypeScript", "Chakra UI", "GraphQL"],
     description:
       "A healthcare portal for patients and doctors to manage appointments, prescriptions, and health records securely.",
   },
